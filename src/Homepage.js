@@ -24,7 +24,7 @@ export default function Homepage(props) {
                 </div>
                 <div className={styles["content"]}>
                     <div className={styles["left-col"]}>
-                        <div class={styles["content-header"]}>Welcome to your unprofessional community</div>
+                        <div className={styles["content-header"]}>Welcome to your unprofessional community</div>
                         <form>
                             <div className={styles["login-form"]}>
                                 <input type="text" placeholder="Email or phone number" />
