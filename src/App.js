@@ -1,8 +1,12 @@
-import SignIn from './SignIn';
+import './App.css';
+import Explore from '@mui/icons-material/Explore';
+import GroupIcon from '@mui/icons-material/Group';
+import SchoolIcon from '@mui/icons-material/School';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useEffect } from 'react';
 // import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 const firebaseApp = initializeApp({
@@ -27,30 +31,63 @@ function signInWithGoogle() {
   // })
 }
 
-function signOut() {auth.signOut()};
+function signOut() { auth.signOut() };
 
 function App() {
 
   const [user] = useAuthState(auth);
 
-  return(
+  return (
     <div>
-    {user ? <MainFeed/> : <SignIn signInMethod={signInWithGoogle}/>}
-  </div>
+      {user ? <MainFeed /> : <Homepage />}
+    </div>
+  )
+}
+
+function Homepage() {
+  return (
+    <>
+      <div className="nav-bar">
+        <div className="header">Linked<span>out</span></div>
+        <div className="button-container">
+          <div className="header-button"><Explore />Discover</div>
+          <div className="header-button"><GroupIcon />People</div>
+          <div className="header-button"><SchoolIcon />Learning</div>
+          <div className="header-button"><BusinessCenterIcon />Jobs</div>
+          <div className="login-container">
+            <button className="join-button">Join now</button>
+            <button className="login-button" onClick={signInWithGoogle}>Sign in</button>
+          </div>
+        </div>
+      </div>
+      <div className="content">
+        <div className="left-col">
+          <div class="content-header">Welcome to your unprofessional community</div>
+          <form>
+            <div className="login-form">
+              <input type="text" placeholder="Email or phone number" />
+              <br></br>
+              <input type="password" placeholder="Password" />
+              <a href="#/" className="forgot-password">Forgot password?</a>
+            <button className="form-signin-button">Sign in</button>
+            <hr />
+            <button className="form-google-signin-button" onClick={signInWithGoogle}>Sign in with Google</button>
+            </div>
+          </form>
+        </div>
+        <div className="right-col">
+          <img src="https://img.freepik.com/free-vector/telecommuting-concept-illustration_114360-1600.jpg?w=1380&t=st=1672614610~exp=1672615210~hmac=76a3caf92f0060bf7f2d278f565ba4ecf3d68a728db0f0201adeaa55595ab5ec" alt="worker" />
+          <a href="https://www.freepik.com/free-vector/telecommuting-concept-illustration_7321334.htm#query=working&position=1&from_view=search&track=sph">Image by storyset</a> on Freepik
+        </div>
+      </div>
+    </>
   )
 }
 
 function MainFeed() {
-
-  console.log(auth.currentUser);
-
-  useEffect(() => {
-    console.log('use effect called') 
-  })
-
   return (
     <>
-      <div>Welcome to LinkedOut!</div>
+      <div>Welcome back, {auth.currentUser.displayName}!</div>
       <button onClick={signOut}>Sign Out</button>
     </>
   )

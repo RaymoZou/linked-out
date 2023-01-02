@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto:wght@300&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+body {
+    margin-left: 350px;
+}
+
+.nav-bar {
+    margin-right: 350px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px;
+    display: flex;
+}
+
+.nav-bar .header {
+    font-family: 'Open Sans', sans-serif;
+    color: #0a66c2;
+    font-size: 36px;
+}
+
+.nav-bar .header span {
+    border-radius: 4px;
+    padding: 2px 4px;
+    background-color: #0a66c2;
+    color: white;
+}
+
+.nav-bar .button-container {
+    gap: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar .header-button {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: grey;
+}
+
+.nav-bar .login-container {
+    display: flex;
+    gap: 4px;
+    padding: 0px 0px 0px 4px;
+    border-left: 1px solid grey;
+}
+
+.nav-bar .login-container button {
+    font-size: 24px;
+    padding: 16px;
+    border-radius: 32px;
+    cursor: pointer;
+}
+
+.login-container .login-button {
+    color: #0a66c2;
+    border: 1px solid #0a66c2;
+    background-color: white;
+    padding: 16px;
+}
+
+.login-container .login-button:hover {
+    background-color: #0a66c20d;
+}
+
+.login-container .join-button {
+    background-color: white;
+    border: none;
+    color: grey;
+}
+
+.login-container .join-button:hover {
+    color: black;
+    background-color: rgb(243, 243, 243);
+}
+
+/* content */
+
+.content {
+    margin-top: 64px;
+    display: flex;
+}
+
+.content .left-col .content-header {
+    font-size: 48px;
+    font-family: 'Roboto', sans-serif;
+    color: #8f5849;
+}
+
+.content .right-col {
+    margin-right: 128px;
+}
+
+.content .left-col form .login-form {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.content .left-col form .login-form input {
+    padding: 12px;
+    font-size: 16px;
+}
+
+.login-form input:focus {
+    border: 2px solid #0a66c2;
+}
+
+.login-form .forgot-password {
+    margin: 24px 0px;
+    color: black;
+    text-decoration: none;
+}
+
+.login-form .forgot-password:hover {
+    text-decoration: underline;
+    color: #0a66c2;
+}
+
+form .form-signin-button {
+    background: #0a66c2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 32px;
+    font-size: 24px;
+}
+
+form .form-google-signin-button {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 32px;
+    font-size: 24px;
+    color: grey;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+form .form-google-signin-button:hover {
+    border: 2px solid black;
+    color: black;
+    background-color: rgb(243, 243, 243);
+}
+
+.content img {
+    height: 550px;
+    width: auto;
+    border-radius: 50% 40% 10% 10%;
+}
+
+hr {
+    margin: 24px;
+}
