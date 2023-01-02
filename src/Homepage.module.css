@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto:wght@300&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
     font-family: sans-serif;
 }
 
-body {
+.homepage {
     margin-left: 350px;
 }
 
@@ -158,6 +159,6 @@ form .form-google-signin-button:hover {
     border-radius: 50% 40% 10% 10%;
 }
 
-hr {
+.divider {
     margin: 24px;
 }
