@@ -1,10 +1,10 @@
-import Homepage from './Homepage';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
-import MainFeed from './MainFeed';
-import Asidebar from './Asidebar'
+import Homepage from './components/Homepage';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import MainFeed from './components/MainFeed';
+import Asidebar from './components/Asidebar'
 
-import styles from './App.module.css';
+import styles from './styles/App.module.css';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
@@ -46,11 +46,11 @@ function AppOut() {
   console.log(auth.currentUser.photoURL);
   return (
     <>
-      <div className={styles['main-container']}>
-        <Navbar photoURL={photoURL}></Navbar>
+      <div className={styles.mainContainer}>
+        <Navbar photoURL={photoURL} signOut={signOut}></Navbar>
         <div>Welcome back, {auth.currentUser.displayName}!</div>
         <button onClick={signOut}>Sign Out</button>
-        <div className={styles['scaffold-container']}>
+        <div className={styles.scaffoldContainer}>
           <Sidebar photoURL={photoURL} displayName={displayName} />
           <MainFeed photoURL={photoURL}/>
           <Asidebar />

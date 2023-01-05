@@ -6,11 +6,15 @@
     font-family: sans-serif;
 }
 
+#test {
+    color: red;
+}
+
 .homepage {
     margin-left: 350px;
 }
 
-.nav-bar {
+.navBar {
     margin-right: 350px;
     display: flex;
     justify-content: space-between;
@@ -19,27 +23,27 @@
     display: flex;
 }
 
-.nav-bar .header {
+.navBar .header {
     font-family: 'Open Sans', sans-serif;
     color: #0a66c2;
     font-size: 36px;
 }
 
-.nav-bar .header span {
+.navBar .header span {
     border-radius: 4px;
     padding: 2px 4px;
     background-color: #0a66c2;
     color: white;
 }
 
-.nav-bar .button-container {
+.navBar .buttonContainer {
     gap: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.nav-bar .header-button {
+.navBar .headerButton {
     gap: 4px;
     display: flex;
     flex-direction: column;
@@ -47,38 +51,38 @@
     color: grey;
 }
 
-.nav-bar .login-container {
+.navBar .loginContainer {
     display: flex;
     gap: 4px;
     padding: 0px 0px 0px 4px;
     border-left: 1px solid grey;
 }
 
-.nav-bar .login-container button {
+.navBar .loginContainer button {
     font-size: 24px;
     padding: 16px;
     border-radius: 32px;
     cursor: pointer;
 }
 
-.login-container .login-button {
+.loginContainer .loginButton {
     color: #0a66c2;
     border: 1px solid #0a66c2;
     background-color: white;
     padding: 16px;
 }
 
-.login-container .login-button:hover {
+.loginContainer .loginButton:hover {
     background-color: #0a66c20d;
 }
 
-.login-container .join-button {
+.loginContainer .joinButton {
     background-color: white;
     border: none;
     color: grey;
 }
 
-.login-container .join-button:hover {
+.loginContainer .joinButton:hover {
     color: black;
     background-color: rgb(243, 243, 243);
 }
@@ -90,44 +94,44 @@
     display: flex;
 }
 
-.content .left-col .content-header {
+.content .leftCol .contentHeader {
     font-size: 48px;
     font-family: 'Roboto', sans-serif;
     color: #8f5849;
 }
 
-.content .right-col {
+.content .rightCol {
     margin-right: 128px;
 }
 
-.content .left-col form .login-form {
+.content .leftCol form .loginForm {
     margin-top: 24px;
     display: flex;
     flex-direction: column;
     width: 400px;
 }
 
-.content .left-col form .login-form input {
+.content .leftCol form .loginForm input {
     padding: 12px;
     font-size: 16px;
 }
 
-.login-form input:focus {
+.loginForm input:focus {
     border: 2px solid #0a66c2;
 }
 
-.login-form .forgot-password {
+.loginForm .forgotPassword {
     margin: 24px 0px;
     color: black;
     text-decoration: none;
 }
 
-.login-form .forgot-password:hover {
+.loginForm .forgotPassword:hover {
     text-decoration: underline;
     color: #0a66c2;
 }
 
-form .form-signin-button {
+form .formSignInButton {
     background: #0a66c2;
     color: white;
     border: none;
@@ -136,7 +140,7 @@ form .form-signin-button {
     font-size: 24px;
 }
 
-form .form-google-signin-button {
+form .formGoogleSignInButton {
     display: flex;
     justify-content: center;
     padding: 12px;
@@ -147,7 +151,7 @@ form .form-google-signin-button {
     border: 1px solid grey;
 }
 
-form .form-google-signin-button:hover {
+form .formGoogleSignInButton:hover {
     border: 2px solid black;
     color: black;
     background-color: rgb(243, 243, 243);
