@@ -7,7 +7,7 @@ import Asidebar from './components/Asidebar'
 import styles from './styles/App.module.css';
 
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider, updateProfile } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const firebaseApp = initializeApp({
@@ -43,16 +43,13 @@ function AppOut() {
 
   const { photoURL, displayName } = auth.currentUser;
 
-  console.log(auth.currentUser.photoURL);
   return (
     <>
       <div className={styles.mainContainer}>
         <Navbar photoURL={photoURL} signOut={signOut}></Navbar>
-        <div>Welcome back, {auth.currentUser.displayName}!</div>
-        <button onClick={signOut}>Sign Out</button>
         <div className={styles.scaffoldContainer}>
           <Sidebar photoURL={photoURL} displayName={displayName} />
-          <MainFeed photoURL={photoURL}/>
+          <MainFeed photoURL={photoURL} />
           <Asidebar />
         </div>
       </div>

@@ -1,4 +1,4 @@
-import styles from '../styles/App.module.css';
+import styles from '../styles/Sidebar.module.css';
 
 export default function Sidebar(props) {
     return (

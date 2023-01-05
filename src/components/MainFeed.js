@@ -3,7 +3,7 @@ import VideoIcon from '@mui/icons-material/SmartDisplay';
 import CalendarIcon from '@mui/icons-material/Today';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 
-import styles from '../styles/App.module.css';
+import styles from '../styles/MainFeed.module.css';
 
 export default function MainFeed(props) {
     return (
