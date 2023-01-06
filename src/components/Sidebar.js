@@ -1,18 +1,23 @@
+import { useContext } from 'react';
+import { UserContext } from '../App';
 import styles from '../styles/Sidebar.module.css';
 
-export default function Sidebar(props) {
+export default function Sidebar() {
+
+    const {displayName, photoURL } = useContext(UserContext)
+
     return (
         <div className={`${styles.scaffoldSidebar} ${styles.outline}`}>
             <div className={styles.wrapper}>
                 <div className={styles.sidebarBackgroundImg}>
                     <img src={
-                        props.photoURL ||
+                        photoURL ||
                         'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
                     } alt='profile_pic' />
                 </div>
             </div>
             <div className={styles.sidebarText}>
-                <div className={styles.sidebarHeader}>{props.displayName}</div>
+                <div className={styles.sidebarHeader}>{displayName}</div>
                 <div className={styles.buttonContainer}>
                     <div className={styles.sidebarButton}>
                         <div>Connections</div>

@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import styles from '../styles/App.module.css';
+import { UserContext } from '../App';
+import { useContext } from 'react';
 
 export default function Overlay(props) {
 
-    const { setOverlay, isOpen, displayName, photoURL, uploadPost } = props;
+    const {displayName, photoURL} = useContext(UserContext);
+    const { setOverlay, isOpen, uploadPost } = props;
 
     const handleOutsideClick = () => setOverlay(false);
 

@@ -5,7 +5,12 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 
 import styles from '../styles/MainFeed.module.css';
 
+import { useContext } from 'react';
+import { UserContext } from '../App';
+
 export default function MainFeed(props) {
+
+    const {photoURL} = useContext(UserContext);
 
     function postModeOn(e) {
         props.setOverlay(true);
@@ -17,7 +22,7 @@ export default function MainFeed(props) {
         <div className={styles.scaffoldMain}>
             <div className={styles.mainInput}>
                 <div className={styles.topContainer}>
-                    <img src={props.photoURL} alt="profile_pic" />
+                    <img src={photoURL} alt="profile_pic" />
                     <button onClick={postModeOn} className={styles.postButton}>Start a post</button>
                 </div>
                 <div className={styles.iconBar}>
