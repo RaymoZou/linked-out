@@ -9,7 +9,10 @@ import styles from './styles/App.module.css';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore } from "firebase/firestore";
+import { addDoc, collection, getDoc, doc, getDocs } from "firebase/firestore";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useState } from 'react';
 
 const firebaseApp = initializeApp({
@@ -22,6 +25,7 @@ const firebaseApp = initializeApp({
 })
 
 const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
 
 function signInWithGoogle() {
   const provider = new GoogleAuthProvider();
@@ -47,6 +51,30 @@ function AppOut() {
 
   const [isOverlayOn, setOverlay] = useState(false);
 
+  async function uploadPost(postDataObject) {
+    try {
+      const docRef = await addDoc(collection(db, "users"), postDataObject);
+    } catch (e) {
+      console.log("Error adding document: ", e);
+    }
+  }
+
+  async function readPosts() {
+    // const docRef = doc(db, "users", "3oJP4DWpVBgy5jj8hyAP");
+    // const docSnap = await getDoc(docRef);
+    // if (docSnap.exists()) {
+    //   console.log(docSnap.data());
+    // } else {
+    //   console.log('no such document!');
+    // }
+    const querySnapshot = await getDocs(collection(db, 'users'));
+    querySnapshot.docs.forEach((doc) => {
+      console.log(doc.data());
+    })
+  }
+
+  readPosts();
+
   return (
     <>
       <div className={styles.mainContainer}>
@@ -62,6 +90,7 @@ function AppOut() {
         setOverlay={setOverlay}
         displayName={displayName}
         photoURL={photoURL}
+        uploadPost={uploadPost}
       />
     </>
   )
