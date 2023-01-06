@@ -30,7 +30,6 @@ export default function Navbar(props) {
   function renderDropDown(e) {
     e.stopPropagation();
     setDropDown(true);
-    console.log(isDropDown);
   }
 
   return (

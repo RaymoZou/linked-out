@@ -2,13 +2,15 @@ import Homepage from './components/Homepage';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import MainFeed from './components/MainFeed';
-import Asidebar from './components/Asidebar'
+import Asidebar from './components/Asidebar';
+import Overlay from './components/Overlay'
 
 import styles from './styles/App.module.css';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useState } from 'react';
 
 const firebaseApp = initializeApp({
   apiKey: 'AIzaSyC-NbO8dXul0fZCrWbbm--FPIJimcMpuLI',
@@ -43,16 +45,24 @@ function AppOut() {
 
   const { photoURL, displayName } = auth.currentUser;
 
+  const [isOverlayOn, setOverlay] = useState(false);
+
   return (
     <>
       <div className={styles.mainContainer}>
         <Navbar photoURL={photoURL} signOut={signOut}></Navbar>
         <div className={styles.scaffoldContainer}>
           <Sidebar photoURL={photoURL} displayName={displayName} />
-          <MainFeed photoURL={photoURL} />
+          <MainFeed photoURL={photoURL} setOverlay={setOverlay} />
           <Asidebar />
         </div>
       </div>
+      <Overlay
+        isOpen={isOverlayOn}
+        setOverlay={setOverlay}
+        displayName={displayName}
+        photoURL={photoURL}
+      />
     </>
   )
 }
