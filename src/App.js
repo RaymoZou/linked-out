@@ -1,20 +1,20 @@
 import LoggedOut from './components/Homepage';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import CreatePost from './components/MainFeed';
+import MainFeed from './components/MainFeed';
 import Asidebar from './components/Asidebar';
 import Overlay from './components/Overlay'
 
 import styles from './styles/App.module.css';
 
-import { useState, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getFirestore, query, orderBy, limit, serverTimestamp, getDocs, getDoc, onSnapshot } from "firebase/firestore";
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore';
 
 const firebaseApp = initializeApp({
   apiKey: 'AIzaSyC-NbO8dXul0fZCrWbbm--FPIJimcMpuLI',
@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div>
-      {user ?
+      {user && UserContext ?
         <UserContext.Provider value={user}>
           <LoggedIn />
         </UserContext.Provider>
@@ -53,39 +53,37 @@ function App() {
 
 function LoggedIn() {
 
-  const [isOverlayOn, setOverlay] = useState(false);
-  // docsQuery is a QuerySnapShot Firebase class
-  const [docsQuery] = useCollection(collection(getFirestore(firebaseApp), 'posts'));
+  const postCollectionRef = collection(db, "posts");
 
-  const signOut = () => auth.signOut();
+  const [isOverlayOn, setOverlay] = useState(false);
+  const q = query(postCollectionRef, orderBy('createdAt', 'desc'), limit(20));
+  const [posts] = useCollection(q, {id: 'testing'});
 
   async function uploadPost(name, photoURL, postText) {
-    const postsRef = collection(db, 'posts');
-    await addDoc(postsRef, {
+    await addDoc(postCollectionRef, {
       name: name,
       photoURL: photoURL,
-      postText: postText
+      postText: postText,
+      createdAt: serverTimestamp(),
     })
   }
-
-  const logPosts = () => (docsQuery ? docsQuery.docs.map(doc => console.log(doc.data().name)) : null);
-  logPosts();
+  
+  // console.log(posts);
 
   return (
     <>
       <div className={styles.mainContainer}>
-        <Navbar signOut={signOut}></Navbar>
+        <Navbar signOut={() => auth.signOut()}></Navbar>
         <div className={styles.scaffoldContainer}>
           <Sidebar />
-          <CreatePost setOverlay={setOverlay} />
+          {posts ? <MainFeed setOverlay={setOverlay} docs={posts.docs}/> : null}
           <Asidebar />
         </div>
       </div>
       <Overlay
         isOpen={isOverlayOn}
         setOverlay={setOverlay}
-        uploadPost={uploadPost}
-      />
+        uploadPost={uploadPost} />
     </>
   )
 }

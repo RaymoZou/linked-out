@@ -81,3 +81,21 @@
 .iconText {
     color: grey;
 }
+
+.outline {
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+}
+
+hr {
+    margin: 16px;
+}
+
+/* PostFeed */
+
+.postContainer {
+    padding: 16px;
+    display: flex;
+}
+

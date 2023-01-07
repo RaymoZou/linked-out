@@ -8,15 +8,17 @@ import styles from '../styles/MainFeed.module.css';
 import { useContext } from 'react';
 import { UserContext } from '../App';
 
-export default function MainFeed(props) {
+export default function MainFeed({ setOverlay, docs }) {
 
-    const {photoURL} = useContext(UserContext);
+    const { photoURL } = useContext(UserContext);
 
     function postModeOn(e) {
-        props.setOverlay(true);
+        setOverlay(true);
         e.stopPropagation();
     }
-    const setOverlayOff = () => props.setOverlay(false);
+    // const setOverlayOff = () => props.setOverlay(false);
+
+    console.log(docs);
 
     return (
         <div className={styles.scaffoldMain}>
@@ -44,6 +46,17 @@ export default function MainFeed(props) {
                     </div>
                 </div>
             </div>
+            <hr />
+            {docs.map(doc => <PostFeed key={doc.id} post={doc.data()} />)}
         </div>
     )
+}
+
+function PostFeed({ post }) {
+
+    const { name, postText, photoURL } = post;
+
+    return <div className={`${styles.outline} ${styles.postContainer}`}>
+        {postText}
+    </div>;
 }
