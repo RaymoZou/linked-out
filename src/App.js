@@ -1,7 +1,7 @@
 import LoggedOut from './components/Homepage';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import MainFeed from './components/MainFeed';
+import CreatePost from './components/MainFeed';
 import Asidebar from './components/Asidebar';
 import Overlay from './components/Overlay'
 
@@ -11,10 +11,10 @@ import { useState, createContext } from 'react';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore } from "firebase/firestore";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
 const firebaseApp = initializeApp({
   apiKey: 'AIzaSyC-NbO8dXul0fZCrWbbm--FPIJimcMpuLI',
@@ -54,25 +54,22 @@ function App() {
 function LoggedIn() {
 
   const [isOverlayOn, setOverlay] = useState(false);
+  // docsQuery is a QuerySnapShot Firebase class
+  const [docsQuery] = useCollection(collection(getFirestore(firebaseApp), 'posts'));
 
   const signOut = () => auth.signOut();
 
-  async function uploadPost(postDataObject) {
-    try {
-      const docRef = await addDoc(collection(db, "users"), postDataObject);
-    } catch (e) {
-      console.log("Error adding document: ", e);
-    }
-  }
-
-  async function readPosts() {
-    const querySnapshot = await getDocs(collection(db, 'users'));
-    querySnapshot.docs.forEach((doc) => {
-      // console.log(doc.data());
+  async function uploadPost(name, photoURL, postText) {
+    const postsRef = collection(db, 'posts');
+    await addDoc(postsRef, {
+      name: name,
+      photoURL: photoURL,
+      postText: postText
     })
   }
 
-  readPosts();
+  const logPosts = () => (docsQuery ? docsQuery.docs.map(doc => console.log(doc.data().name)) : null);
+  logPosts();
 
   return (
     <>
@@ -80,7 +77,7 @@ function LoggedIn() {
         <Navbar signOut={signOut}></Navbar>
         <div className={styles.scaffoldContainer}>
           <Sidebar />
-          <MainFeed setOverlay={setOverlay} />
+          <CreatePost setOverlay={setOverlay} />
           <Asidebar />
         </div>
       </div>

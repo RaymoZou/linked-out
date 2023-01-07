@@ -29,7 +29,7 @@ export default function Homepage(props) {
                             <div className={styles.loginForm}>
                                 <input type="text" placeholder="Email or phone number" />
                                 <br></br>
-                                <input type="password" placeholder="Password" />
+                                <input type="password" placeholder="Password" autoComplete="on"/>
                                 <a href="#/" className={styles.forgotPassword}>Forgot password?</a>
                                 <button className={styles.formSignInButton}>Sign in</button>
                                 <hr className={styles.divider} />

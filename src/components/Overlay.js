@@ -24,19 +24,15 @@ export default function Overlay(props) {
 
 function PostInput(props) {
 
-    const { photoURL, displayName, setOverlay, uploadPost } = props;
+    const { photoURL, displayName } = useContext(UserContext)
+    const { setOverlay, uploadPost } = props;
     const [postText, setPostText] = useState();
 
     const handleInsideClick = e => e.stopPropagation();
     const updatePostText = e => setPostText(e.target.value);
 
     async function postToFirebase(e) {
-        const postObject = {
-            name: {displayName},
-            photoURL: {photoURL},
-            postText: {postText}
-        }
-        uploadPost(postObject);
+        uploadPost(displayName, photoURL, postText);
         setPostText('');
         setOverlay(false);
         e.preventDefault();
