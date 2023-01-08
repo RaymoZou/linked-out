@@ -7,14 +7,14 @@ import Overlay from './components/Overlay'
 
 import styles from './styles/App.module.css';
 
-import { useState, useEffect, createContext } from 'react';
+import { useState, createContext } from 'react';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { addDoc, collection, getFirestore, query, orderBy, limit, serverTimestamp, getDocs, getDoc, onSnapshot } from "firebase/firestore";
+import { addDoc, collection, getFirestore, query, orderBy, limit, serverTimestamp } from "firebase/firestore";
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
 const firebaseApp = initializeApp({
   apiKey: 'AIzaSyC-NbO8dXul0fZCrWbbm--FPIJimcMpuLI',
