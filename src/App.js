@@ -67,8 +67,6 @@ function LoggedIn() {
       createdAt: serverTimestamp(),
     })
   }
-  
-  // console.log(posts);
 
   return (
     <>

@@ -47,7 +47,9 @@ export default function MainFeed({ setOverlay, docs }) {
                 </div>
             </div>
             <hr />
-            {docs.map(doc => <PostFeed key={doc.id} post={doc.data()} />)}
+            <div className={styles.postsContainer}>
+                {docs.map(doc => <PostFeed key={doc.id} post={doc.data()} />)}
+            </div>
         </div>
     )
 }
@@ -57,6 +59,14 @@ function PostFeed({ post }) {
     const { name, postText, photoURL } = post;
 
     return <div className={`${styles.outline} ${styles.postContainer}`}>
-        {postText}
+        <div className={styles.posterInfoContainer}>
+            <img src={photoURL} alt="" />
+            <div className={styles.postNameContainer}>
+                {name}
+            </div>
+        </div>
+        <div className={styles.postTextContainer}>
+            {postText}
+        </div>
     </div>;
 }
