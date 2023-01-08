@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import MainFeed from './components/MainFeed';
 import Asidebar from './components/Asidebar';
-import Overlay from './components/Overlay'
+import PostInputContainer from './components/Overlay'
 
 import styles from './styles/App.module.css';
 
@@ -78,7 +78,7 @@ function LoggedIn() {
           <Asidebar />
         </div>
       </div>
-      <Overlay
+      <PostInputContainer
         isOpen={isOverlayOn}
         setOverlay={setOverlay}
         uploadPost={uploadPost} />
