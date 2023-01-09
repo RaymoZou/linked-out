@@ -1,17 +1,26 @@
 import LoggedOut from './components/Homepage';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import MainFeed from './components/MainFeed';
+import PostCreationBar from './components/MainFeed';
 import Asidebar from './components/Asidebar';
 import PostInputContainer from './components/Overlay'
+import PostContainer from './components/PostContainer';
 
 import styles from './styles/App.module.css';
 
-import { useState, createContext } from 'react';
+import { useState, createContext, useContext } from 'react';
 
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { addDoc, collection, getFirestore, query, orderBy, limit, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getFirestore,
+  query,
+  orderBy,
+  limit,
+  serverTimestamp
+} from "firebase/firestore";
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
@@ -27,6 +36,7 @@ const firebaseApp = initializeApp({
 
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
+const postCollectionRef = collection(db, "posts");
 
 export const UserContext = createContext(null);
 
@@ -41,7 +51,7 @@ function App() {
 
   return (
     <div>
-      {user && UserContext ?
+      {user ?
         <UserContext.Provider value={user}>
           <LoggedIn />
         </UserContext.Provider>
@@ -53,18 +63,17 @@ function App() {
 
 function LoggedIn() {
 
-  const postCollectionRef = collection(db, "posts");
-
   const [isOverlayOn, setOverlay] = useState(false);
   const q = query(postCollectionRef, orderBy('createdAt', 'desc'), limit(20));
-  const [posts] = useCollection(q, {id: 'testing'});
+  const [posts] = useCollection(q);
 
-  async function uploadPost(name, photoURL, postText) {
+  async function uploadPost(name, photoURL, postText, uid) {
     await addDoc(postCollectionRef, {
       name: name,
       photoURL: photoURL,
       postText: postText,
       createdAt: serverTimestamp(),
+      uid: uid,
     })
   }
 
@@ -74,16 +83,21 @@ function LoggedIn() {
         <Navbar signOut={() => auth.signOut()}></Navbar>
         <div className={styles.scaffoldContainer}>
           <Sidebar />
-          {posts ? <MainFeed setOverlay={setOverlay} docs={posts.docs}/> : null}
+          <MidContainer>
+            <PostCreationBar setOverlay={setOverlay} />
+            <PostContainer posts={posts} />
+          </MidContainer>
           <Asidebar />
         </div>
       </div>
-      <PostInputContainer
-        isOpen={isOverlayOn}
-        setOverlay={setOverlay}
-        uploadPost={uploadPost} />
+      <PostInputContainer isOpen={isOverlayOn} setOverlay={setOverlay} uploadPost={uploadPost} />
     </>
   )
+}
+
+function MidContainer(props) {
+  return <div className={styles.scaffoldMain}> {props.children}
+  </div>
 }
 
 export default App;

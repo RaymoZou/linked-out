@@ -4,6 +4,11 @@
     overflow: auto;
 }
 
+.scaffoldMain {
+    width: 540px;
+    height: 600px;
+}
+
 .outline {
     border-radius: 8px;
     border: 1px solid lightgrey;

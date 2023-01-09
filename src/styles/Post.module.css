@@ -1,0 +1,32 @@
+.postContainer {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: white;
+}
+
+.postContainer img {
+    height: 48px;
+    width: 48px;
+    border-radius: 100%;
+}
+
+.postContainer .posterInfoContainer {
+    display: flex;
+    gap: 12px;
+}
+
+.postContainer .postNameContainer {
+    margin-top: 12px;
+}
+
+.postContainer .postTextContainer {
+    overflow-wrap: break-word;
+}
+
+.outline {
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+}

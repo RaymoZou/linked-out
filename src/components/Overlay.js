@@ -24,7 +24,7 @@ export default function PostInputContainer(props) {
 
 function PostInput(props) {
 
-    const { photoURL, displayName } = useContext(UserContext)
+    const { photoURL, displayName, uid } = useContext(UserContext)
     const { setOverlay, uploadPost } = props;
     const [postText, setPostText] = useState('');
 
@@ -32,7 +32,7 @@ function PostInput(props) {
     const updatePostText = e => setPostText(e.target.value);
 
     async function postToFirebase(e) {
-        uploadPost(displayName, photoURL, postText);
+        uploadPost(displayName, photoURL, postText, uid);
         setPostText('');
         setOverlay(false);
         e.preventDefault();

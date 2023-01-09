@@ -1,8 +1,3 @@
-.scaffoldMain {
-    width: 540px;
-    height: 600px;
-}
-
 .mainInput {
     height: 100px;
     background-color: white;
@@ -93,36 +88,4 @@ hr {
 }
 
 /* PostFeed */
-
-.postsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.postContainer {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.postContainer img {
-    height: 48px;
-    width: 48px;
-    border-radius: 100%;
-}
-
-.postContainer .posterInfoContainer {
-    display: flex;
-    gap: 12px;
-}
-
-.postContainer .postNameContainer {
-    margin-top: 12px;
-}
-
-.postContainer .postTextContainer {
-    overflow-wrap: break-word;
-}
 
