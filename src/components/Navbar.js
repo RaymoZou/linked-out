@@ -64,10 +64,9 @@ export default function Navbar(props) {
 function DropDownMenu(props) {
   return (
     <div className={styles.dropDownContainer}>
-      <div className={styles.dropDownMenu}>
+      <div className={`${styles.dropDownMenu} ${styles.outline}`}>
         <ul>
-          <div>Welcome back!</div>
-          <div onClick={props.signOut}>Sign Out</div>
+          <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>
         </ul>
       </div>
     </div>
