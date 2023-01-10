@@ -13,6 +13,7 @@ import { useState, createContext, useContext } from 'react';
 import firebaseConfig from './firebase.config.js';
 
 import { initializeApp } from 'firebase/app';
+import { getStorage } from 'firebase/storage';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import {
   addDoc,
@@ -24,12 +25,13 @@ import {
   serverTimestamp
 } from "firebase/firestore";
 
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
 const firebaseApp = initializeApp(firebaseConfig);
-
-const auth = getAuth(firebaseApp);
+export const storage = getStorage(firebaseApp)
+export const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 const postCollectionRef = collection(db, "posts");
 
@@ -62,13 +64,14 @@ function LoggedIn() {
   const q = query(postCollectionRef, orderBy('createdAt', 'desc'), limit(20));
   const [posts] = useCollection(q);
 
-  async function uploadPost(name, photoURL, postText, uid) {
-    await addDoc(postCollectionRef, {
+  function uploadPost(name, photoURL, postText, uid, postImgURL) {
+    addDoc(postCollectionRef, {
       name: name,
       photoURL: photoURL,
       postText: postText,
       createdAt: serverTimestamp(),
       uid: uid,
+      postImgURL: postImgURL,
     })
   }
 

@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import styles from '../styles/Overlay.module.css';
-import { UserContext } from '../App';
+import { UserContext, storage } from '../App';
+import { ref, getDownloadURL , uploadBytes } from 'firebase/storage';
 import { useContext } from 'react';
+import { v4 } from 'uuid';
 
 export default function PostInputContainer(props) {
+
+    // TODO: replace UserContext with import statments
+    // console.log(auth);
 
     const { displayName, photoURL } = useContext(UserContext);
     const { setOverlay, isOpen, uploadPost } = props;
@@ -24,18 +29,31 @@ export default function PostInputContainer(props) {
 
 function PostInput(props) {
 
-    const { photoURL, displayName, uid } = useContext(UserContext)
+    const { photoURL: profileImgURL, displayName, uid } = useContext(UserContext)
     const { setOverlay, uploadPost } = props;
     const [postText, setPostText] = useState('');
+    const [postImg, setPostImg] = useState();
+
 
     const handleInsideClick = e => e.stopPropagation();
     const updatePostText = e => setPostText(e.target.value);
 
     async function postToFirebase(e) {
-        uploadPost(displayName, photoURL, postText, uid);
-        setPostText('');
-        setOverlay(false);
         e.preventDefault();
+        const photoURL = await uploadImg(postImg);
+        uploadPost(displayName, profileImgURL, postText, uid, photoURL);
+        setPostText('');  
+        setOverlay(false);
+    }
+
+    async function uploadImg(img) {
+        if (img) {
+            const imgRef = ref(storage, `images/${uid}/${img.name + v4()}`);
+            await uploadBytes(imgRef, postImg);
+            return await getDownloadURL(imgRef);
+        } else {
+            return null;
+        }
     }
 
     return <div onClick={handleInsideClick}
@@ -46,7 +64,7 @@ function PostInput(props) {
                 <button className={styles.closeButton} onClick={() => setOverlay(false)}>X</button>
             </div>
             <div className={styles.profilePicContainer}>
-                <img src={photoURL} alt="" />
+                <img src={profileImgURL} alt="" />
                 <div>{displayName}</div>
             </div>
             <div className={styles.formContent}>
@@ -58,6 +76,7 @@ function PostInput(props) {
                     onChange={updatePostText}
                     value={postText}>
                 </textarea>
+                <input type="file" onChange={(event) => { setPostImg(event.target.files[0]) }} />
                 <div className={styles.submitButtonContainer}>
                     <button
                         disabled={postText === ''}
