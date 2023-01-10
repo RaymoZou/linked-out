@@ -13,13 +13,19 @@
 }
 
 
+.postContainer .postHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
 .postContainer .posterInfoContainer {
     display: flex;
-    gap: 12px;
+    gap: 8px;
+    align-items: flex-start;
 }
 
 .postContainer .postNameContainer {
-    margin-top: 12px;
+    font-size: 14px;
 }
 
 .postContainer .postTextContainer {
@@ -30,4 +36,16 @@
     background-color: white;
     border-radius: 8px;
     border: 1px solid lightgrey;
+}
+
+.postContainer .horizontalButton {
+    padding: 4px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+}
+
+.postContainer .horizontalButton:hover {
+    background-color: lightgrey;
+    cursor: pointer;
 }
