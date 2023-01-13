@@ -29,7 +29,6 @@ export default function Navbar(props) {
     return () => document.body.removeEventListener('click', closeDropDown);
   })
 
-  // const renderDropDown = () => setDropDown(true);
   function renderDropDown(e) {
     e.stopPropagation();
     setDropDown(true);
@@ -52,12 +51,11 @@ export default function Navbar(props) {
           <div className={styles.navButtonText}>
             <div>Me</div>
             <DropDownIcon />
-            {isDropDown ?
-              <DropDownMenu>
-                <ul>
-                  <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>
-                </ul>
-              </DropDownMenu> : null}
+            <DropDownMenu isOpen={isDropDown}>
+              <ul>
+                <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>
+              </ul>
+            </DropDownMenu>
           </div>
         </button>
         <div className={styles.navButton}><AppsIcon />Work</div>

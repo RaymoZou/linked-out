@@ -36,8 +36,6 @@ function PostInput(props) {
   const handleInsideClick = (e) => e.stopPropagation();
   const updatePostText = (e) => setPostText(e.target.value);
 
-  console.log(postImg);
-
   async function postToFirebase(e) {
     e.preventDefault();
     const photoURL = await uploadImg(postImg);
