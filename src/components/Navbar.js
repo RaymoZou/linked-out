@@ -8,6 +8,7 @@ import AppsIcon from '@mui/icons-material/Apps';
 import DropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import styles from '../styles/Navbar.module.css';
+import DropDownMenu from './DropDownMenu';
 import { UserContext } from '../App';
 import { useEffect, useState, useRef, useContext } from 'react';
 
@@ -51,23 +52,16 @@ export default function Navbar(props) {
           <div className={styles.navButtonText}>
             <div>Me</div>
             <DropDownIcon />
-            {isDropDown ? <DropDownMenu signOut={props.signOut} /> : null}
+            {isDropDown ?
+              <DropDownMenu>
+                <ul>
+                  <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>
+                </ul>
+              </DropDownMenu> : null}
           </div>
         </button>
         <div className={styles.navButton}><AppsIcon />Work</div>
         <div className={styles.navButton}><AutoStoriesIcon />Learning</div>
-      </div>
-    </div>
-  )
-}
-
-function DropDownMenu(props) {
-  return (
-    <div className={styles.dropDownContainer}>
-      <div className={`${styles.dropDownMenu} ${styles.outline}`}>
-        <ul>
-          <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>
-        </ul>
       </div>
     </div>
   )

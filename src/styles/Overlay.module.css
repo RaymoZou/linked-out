@@ -63,7 +63,7 @@ textarea {
     background-color: white;
 }
 
-.postButtonContainer
+.postButtonContainer {
     width: 100%;
     display: flex;
     flex-direction: row;
