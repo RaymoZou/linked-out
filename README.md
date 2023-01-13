@@ -3,7 +3,9 @@ A replication of the popular LinkedIn social media website created using React a
 
 ## Core Features
 - User login with Google authentication
-- Create and read plain text posts
+- Create and read posts made by other users
+- Attach an image to a post
+- Delete post
 
 ## Known Issues
 - User profile picture will occasionally not render correctly
