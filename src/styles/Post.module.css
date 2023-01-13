@@ -49,3 +49,8 @@
     background-color: lightgrey;
     cursor: pointer;
 }
+
+.deleteButton:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

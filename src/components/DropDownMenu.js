@@ -1,4 +1,4 @@
-import styles from '../styles/Navbar.module.css';
+import styles from '../styles/DropDownMenu.module.css';
 
 export default function DropDownMenu(props) {
     return <>

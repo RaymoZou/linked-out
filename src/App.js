@@ -32,7 +32,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 const firebaseApp = initializeApp(firebaseConfig);
 export const storage = getStorage(firebaseApp)
 export const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp);
+export const db = getFirestore(firebaseApp);
 const postCollectionRef = collection(db, "posts");
 
 export const UserContext = createContext(null);

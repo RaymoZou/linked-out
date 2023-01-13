@@ -75,37 +75,11 @@
     width: 350px;
 }
 
-.dropDownContainer {
-    position: relative;
-}
-
-.dropDownMenu {
-    position: absolute;
-    height: 300px;
-    width: 250px;
-    background-color: white;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    top: 36px;
-    right: 0;
-    cursor: default;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    color: grey;
-    padding: 8px;
-}
-
-.dropDownMenu .signOutButton {
+.signOutButton {
     font-size: 16px;
 }
 
-.dropDownMenu .signOutButton:hover {
+.signOutButton:hover {
     text-decoration: underline;
     cursor: pointer;
-}
-
-.outline {
-    border-radius: 8px;
-    border: 1px solid lightgrey;
-    background-color: white;
 }
