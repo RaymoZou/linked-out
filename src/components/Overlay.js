@@ -38,10 +38,10 @@ function PostInput(props) {
 
   async function postToFirebase(e) {
     e.preventDefault();
+    setOverlay(false);
     const photoURL = await uploadImg(postImg);
     uploadPost(displayName, profileImgURL, postText, uid, photoURL);
     setPostText("");
-    setOverlay(false);
   }
 
   async function uploadImg(img) {
