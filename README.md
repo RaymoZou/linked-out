@@ -1,5 +1,5 @@
 # LinkedOut
-A replication of the popular LinkedIn social media website created using React and Firease.
+A replication of the popular LinkedIn social media website created using React and Firebase.
 
 ## Core Features
 - User login with Google authentication

@@ -46,14 +46,16 @@ export default function Post(props) {
                     {name}
                 </div>
             </div>
-            <div onClick={renderDropDown} className={styles.horizontalButton}>
-                <ThreeDots />
-                <DropDownMenu isOpen={isDropDown}>
-                    <ul onClick={deletePost} className={styles.deleteButton}>
-                        <li>Delete post</li>
-                    </ul>
-                </DropDownMenu>
-            </div>
+            {currentUser.uid === uid ?
+                <div onClick={renderDropDown} className={styles.horizontalButton}>
+                    <ThreeDots />
+                    <DropDownMenu isOpen={isDropDown}>
+                        <ul onClick={deletePost} className={styles.deleteButton}>
+                            <li>Delete post</li>
+                        </ul>
+                    </DropDownMenu>
+                </div>
+                : null}
         </div>
         <div className={styles.postTextContainer}>
             {postText}
