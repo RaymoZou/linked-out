@@ -33,7 +33,7 @@ export default function Homepage(props) {
                                 <a href="#/" className={styles.forgotPassword}>Forgot password?</a>
                                 <button className={styles.formSignInButton}>Sign in</button>
                                 <hr className={styles.divider} />
-                                <button className={styles.formGoogleSignInButton} onClick={props.signInMethod}>Sign in with Google</button>
+                                <button type="button" className={styles.formGoogleSignInButton} onClick={props.signInMethod}>Sign in with Google</button>
                             </div>
                         </form>
                     </div>
