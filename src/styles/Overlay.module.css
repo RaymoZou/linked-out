@@ -81,6 +81,10 @@ textarea {
     justify-self: flex-end;
 }
 
+.submitButton:hover {
+    cursor: pointer;
+}
+
 .submitButton:disabled {
     background-color: lightgrey;
     color: grey;
