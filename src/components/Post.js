@@ -2,15 +2,16 @@ import styles from '../styles/Post.module.css';
 import ThreeDots from '@mui/icons-material/MoreHoriz';
 import DropDownMenu from './DropDownMenu';
 import { useEffect, useState, useRef, useContext } from 'react';
-import { db, UserContext } from '../App.js';
+import { db, UserContext, storage } from '../App.js';
 import { deleteDoc, doc } from 'firebase/firestore';
+import { ref, deleteObject } from 'firebase/storage';
 
 export default function Post(props) {
 
     const currentUser = useContext(UserContext);
     const [isDropDown, setDropDown] = useState(false);
     const btnRef = useRef();
-    const { name, postText, photoURL, postImgURL, uid, post } = props.post;
+    const { name, postText, photoURL, postImgURL, uid, imgName } = props.post;
     const { postId } = props;
 
     useEffect(() => {
@@ -30,6 +31,8 @@ export default function Post(props) {
     }
 
     function deletePost() {
+        const imgRef = ref(storage, `images/${currentUser.uid}/${imgName}`);
+        deleteObject(imgRef);
         // TODO: add image delete THEN post delete
         if (currentUser.uid === uid) {
             const docRef = doc(db, "posts", postId);

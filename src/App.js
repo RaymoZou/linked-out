@@ -64,7 +64,7 @@ function LoggedIn() {
   const q = query(postCollectionRef, orderBy('createdAt', 'desc'), limit(20));
   const [posts] = useCollection(q);
 
-  function uploadPost(name, photoURL, postText, uid, postImgURL) {
+  function uploadPost(name, photoURL, postText, uid, postImgURL, imgName) {
     addDoc(postCollectionRef, {
       name: name,
       photoURL: photoURL,
@@ -72,6 +72,7 @@ function LoggedIn() {
       createdAt: serverTimestamp(),
       uid: uid,
       postImgURL: postImgURL,
+      imgName: imgName
     })
   }
 

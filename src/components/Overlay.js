@@ -39,16 +39,21 @@ function PostInput(props) {
   async function postToFirebase(e) {
     e.preventDefault();
     setOverlay(false);
-    const photoURL = await uploadImg(postImg);
-    uploadPost(displayName, profileImgURL, postText, uid, photoURL);
+    const {imgURL, imgName} = await getImage(postImg);
+    uploadPost(displayName, profileImgURL, postText, uid, imgURL, imgName);
     setPostText("");
   }
 
-  async function uploadImg(img) {
+  async function getImage(img) {
     if (img) {
-      const imgRef = ref(storage, `images/${uid}/${img.name + v4()}`);
+      const imgName = img.name + v4();
+      const imgRef = ref(storage, `images/${uid}/${imgName}`);
       await uploadBytes(imgRef, postImg);
-      return await getDownloadURL(imgRef);
+      const imgURL = await getDownloadURL(imgRef);
+      return {
+        imgURL: imgURL,
+        imgName: imgName
+      }
     } else {
       return null;
     }
