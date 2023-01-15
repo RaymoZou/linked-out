@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     background-color: white;
+    position: fixed;
+    width: 100%;
 }
 
 .wrapper {

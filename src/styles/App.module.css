@@ -16,7 +16,7 @@
 }
 
 .scaffoldContainer {
-    margin: 32px 350px;
+    margin: 64px 350px;
     display: flex;
     justify-content: center;
     gap: 24px;
