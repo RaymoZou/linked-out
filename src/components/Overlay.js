@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ImageIcon from "@mui/icons-material/ImageRounded";
 import styles from "../styles/Overlay.module.css";
+import CloseIcon from '@mui/icons-material/Close';
 import { UserContext, storage } from "../App";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { useContext } from "react";
@@ -39,7 +40,7 @@ function PostInput(props) {
   async function postToFirebase(e) {
     e.preventDefault();
     setOverlay(false);
-    const {imgURL, imgName} = await getImage(postImg);
+    const { imgURL, imgName } = await getImage(postImg);
     uploadPost(displayName, profileImgURL, postText, uid, imgURL, imgName);
     setPostText("");
   }
@@ -74,7 +75,7 @@ function PostInput(props) {
             className={styles.closeButton}
             onClick={() => setOverlay(false)}
           >
-            X
+            <CloseIcon />
           </button>
         </div>
         <div className={styles.profilePicContainer}>
