@@ -42,8 +42,6 @@ export default function Post(props) {
         }
     }
 
-    console.log(createdAt);
-
     return <div className={`${styles.outline} ${styles.container}`}>
         <div className={styles.header}>
             <div className={styles.posterInfo}>
