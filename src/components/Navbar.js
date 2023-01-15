@@ -36,30 +36,32 @@ export default function Navbar(props) {
 
   return (
     <div className={styles.navBar}>
-      <div className={styles.searchBarContainer}>
-        <div className={styles.logo}>out</div>
-        <input className={styles.searchBar} placeholder='Search'></input>
-      </div>
-      <div className={styles.navButtonContainer}>
-        <div className={styles.navButton}><HomeIcon />Home</div>
-        <div className={styles.navButton}><PeopleIcon />My Network</div>
-        <div className={styles.navButton}><SuitcaseIcon />Jobs</div>
-        <div className={styles.navButton}><ChatBubbleIcon />Messaging</div>
-        <div className={styles.navButton}><BellIcon />Notifications</div>
-        <button ref={btnRef} onClick={renderDropDown} className={styles.navProfile}>
-          <img alt='profile_pic' src={user.photoURL} />
-          <div className={styles.navButtonText}>
-            <div>Me</div>
-            <DropDownIcon />
-            <DropDownMenu isOpen={isDropDown}>
-              <ul>
-                <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>
-              </ul>
-            </DropDownMenu>
-          </div>
-        </button>
-        <div className={styles.navButton}><AppsIcon />Work</div>
-        <div className={styles.navButton}><AutoStoriesIcon />Learning</div>
+      <div className={styles.wrapper}>
+        <div className={styles.searchBarContainer}>
+          <div className={styles.logo}>out</div>
+          <input className={styles.searchBar} placeholder='Search'></input>
+        </div>
+        <div className={styles.navButtonContainer}>
+          <div className={styles.navButton}><HomeIcon />Home</div>
+          <div className={styles.navButton}><PeopleIcon />My Network</div>
+          <div className={styles.navButton}><SuitcaseIcon />Jobs</div>
+          <div className={styles.navButton}><ChatBubbleIcon />Messaging</div>
+          <div className={styles.navButton}><BellIcon />Notifications</div>
+          <button ref={btnRef} onClick={renderDropDown} className={styles.navProfile}>
+            <img alt='profile_pic' src={user.photoURL} />
+            <div className={styles.navButtonText}>
+              <div>Me</div>
+              <DropDownIcon />
+              <DropDownMenu isOpen={isDropDown}>
+                <ul>
+                  <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>
+                </ul>
+              </DropDownMenu>
+            </div>
+          </button>
+          <div className={styles.navButton}><AppsIcon />Work</div>
+          <div className={styles.navButton}><AutoStoriesIcon />Learning</div>
+        </div>
       </div>
     </div>
   )

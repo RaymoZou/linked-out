@@ -1,8 +1,11 @@
 .navBar {
     display: flex;
-    justify-content: space-between;
-    padding: 8px 400px;
+    justify-content: center;
     background-color: white;
+}
+
+.wrapper {
+    display: flex;
 }
 
 .navButtonContainer {
@@ -52,6 +55,7 @@
 .searchBarContainer {
     display: flex;
     align-items: center;
+    margin-right: 200px;
 }
 
 .searchBarContainer .logo {

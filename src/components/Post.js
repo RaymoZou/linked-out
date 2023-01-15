@@ -43,11 +43,11 @@ export default function Post(props) {
     }
 
 
-    return <div className={`${styles.outline} ${styles.postContainer}`}>
-        <div className={styles.postHeader}>
-            <div className={styles.posterInfoContainer}>
+    return <div className={`${styles.outline} ${styles.container}`}>
+        <div className={styles.header}>
+            <div className={styles.posterInfo}>
                 <img className={styles.profileImg} src={photoURL} alt="" />
-                <div className={styles.postNameContainer}>
+                <div className={styles.nameContainer}>
                     {name}
                 </div>
             </div>
@@ -62,7 +62,7 @@ export default function Post(props) {
                 </div>
                 : null}
         </div>
-        <div className={styles.postTextContainer}>
+        <div className={styles.textContainer}>
             {postText}
         </div>
         {postImgURL ? <img className={styles.postImg} src={postImgURL} alt='post_image' /> : null}

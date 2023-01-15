@@ -1,8 +1,8 @@
-.dropDownContainer {
+.container {
     position: relative;
 }
 
-.dropDownMenu {
+.menu {
     position: absolute;
     /* height: 300px; */
     width: 150px;

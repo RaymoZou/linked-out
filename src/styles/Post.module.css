@@ -1,4 +1,4 @@
-.postContainer {
+.container {
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -6,29 +6,29 @@
     background-color: white;
 }
 
-.postContainer .profileImg {
+.profileImg {
     height: 48px;
     width: 48px;
     border-radius: 100%;
 }
 
 
-.postContainer .postHeader {
+.header {
     display: flex;
     justify-content: space-between;
 }
 
-.postContainer .posterInfoContainer {
+.posterInfo {
     display: flex;
     gap: 8px;
     align-items: flex-start;
 }
 
-.postContainer .postNameContainer {
+.nameContainer {
     font-size: 14px;
 }
 
-.postContainer .postTextContainer {
+.textContainer {
     overflow-wrap: break-word;
 }
 
@@ -38,14 +38,14 @@
     border: 1px solid lightgrey;
 }
 
-.postContainer .horizontalButton {
+.horizontalButton {
     padding: 4px;
     width: 25px;
     height: 25px;
     border-radius: 100%;
 }
 
-.postContainer .horizontalButton:hover {
+.horizontalButton:hover {
     background-color: lightgrey;
     cursor: pointer;
 }

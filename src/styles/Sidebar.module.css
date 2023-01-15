@@ -4,7 +4,7 @@
     background-color: white;
 }
 
-.scaffoldSidebar {
+.scaffold {
     background-color: white;
     width: 225px;
     height: 400px;
@@ -16,6 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 8px;
 }
 
 .profilePicture {
@@ -25,7 +26,7 @@
 }
 
 
-.sidebarText {
+.content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +38,7 @@
     border-right: none;
 }
 
-.sidebarHeader {
+.header {
     /* background-color: antiquewhite; */
     font-size: 24px;
     display: flex;
@@ -46,14 +47,14 @@
     height: 50px;
 }
 
-.sidebarButton {
+.button {
     font-size: 14px;
     padding: 8px;
     display: flex;
     justify-content: space-between;
 }
 
-.sidebarButton:hover {
+.button:hover {
     background-color: rgba(211, 211, 211, 0.555);
     cursor: pointer;
 }
