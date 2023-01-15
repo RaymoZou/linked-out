@@ -24,6 +24,7 @@ import {
   limit,
   serverTimestamp
 } from "firebase/firestore";
+import { useEffect } from "react";
 
 
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -37,7 +38,12 @@ const postCollectionRef = collection(db, "posts");
 
 export const UserContext = createContext(null);
 
+
 function App() {
+
+  useEffect(() => {
+    document.title = "LinkedOut";
+  })
 
   const [user] = useAuthState(auth);
 
