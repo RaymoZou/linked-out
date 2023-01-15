@@ -31,8 +31,10 @@ export default function Post(props) {
     }
 
     function deletePost() {
-        const imgRef = ref(storage, `images/${currentUser.uid}/${imgName}`);
-        deleteObject(imgRef);
+        if (imgName) {
+            const imgRef = ref(storage, `images/${currentUser.uid}/${imgName}`);
+            deleteObject(imgRef);
+        }
         // TODO: add image delete THEN post delete
         if (currentUser.uid === uid) {
             const docRef = doc(db, "posts", postId);

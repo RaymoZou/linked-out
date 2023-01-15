@@ -8,7 +8,7 @@ import PostContainer from './components/PostContainer';
 
 import styles from './styles/App.module.css';
 
-import { useState, createContext, useContext } from 'react';
+import { useState, createContext } from 'react';
 
 import firebaseConfig from './firebase.config.js';
 

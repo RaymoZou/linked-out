@@ -55,7 +55,10 @@ function PostInput(props) {
         imgName: imgName
       }
     } else {
-      return null;
+      return {
+        imgURL: null,
+        imgName: null
+      };
     }
   }
 
