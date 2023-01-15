@@ -3,7 +3,7 @@ import VideoIcon from '@mui/icons-material/SmartDisplay';
 import CalendarIcon from '@mui/icons-material/Today';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 
-import styles from '../styles/MainFeed.module.css';
+import styles from '../styles/Homepage.module.css';
 
 import { useContext } from 'react';
 import { UserContext } from '../App';
@@ -16,6 +16,7 @@ export default function MainFeed({ setOverlay, docs }) {
         setOverlay(true);
         e.stopPropagation();
     }
+    // const setOverlayOff = () => props.setOverlay(false);
 
     return (
         <>

@@ -8,7 +8,7 @@ import AppsIcon from '@mui/icons-material/Apps';
 import DropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import styles from '../styles/Navbar.module.css';
-import DropDownMenu from './DropDownMenu';
+import DropDownMenu from './ui/DropDownMenu';
 import { UserContext } from '../App';
 import { useEffect, useState, useRef, useContext } from 'react';
 

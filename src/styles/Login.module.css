@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+#test {
+    color: red;
+}
+
+.homepage {
+    margin-left: 350px;
+}
+
+.navBar {
+    margin-right: 350px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 16px;
+    display: flex;
+}
+
+.navBar .header {
+    font-family: 'Open Sans', sans-serif;
+    color: #0a66c2;
+    font-size: 36px;
+}
+
+.navBar .header span {
+    border-radius: 4px;
+    padding: 2px 4px;
+    background-color: #0a66c2;
+    color: white;
+}
+
+.navBar .buttonContainer {
+    gap: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navBar .headerButton {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: grey;
+}
+
+.navBar .loginContainer {
+    display: flex;
+    gap: 4px;
+    padding: 0px 0px 0px 4px;
+    border-left: 1px solid grey;
+}
+
+.navBar .loginContainer button {
+    font-size: 24px;
+    padding: 16px;
+    border-radius: 32px;
+    cursor: pointer;
+}
+
+.loginContainer .loginButton {
+    color: #0a66c2;
+    border: 1px solid #0a66c2;
+    background-color: white;
+    padding: 16px;
+}
+
+.loginContainer .loginButton:hover {
+    background-color: #0a66c20d;
+}
+
+.loginContainer .joinButton {
+    background-color: white;
+    border: none;
+    color: grey;
+}
+
+.loginContainer .joinButton:hover {
+    color: black;
+    background-color: rgb(243, 243, 243);
+}
+
+/* content */
+
+.content {
+    margin-top: 64px;
+    display: flex;
+}
+
+.content .leftCol .contentHeader {
+    font-size: 48px;
+    font-family: 'Roboto', sans-serif;
+    color: #8f5849;
+}
+
+.content .rightCol {
+    margin-right: 128px;
+}
+
+.content .leftCol form .loginForm {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.content .leftCol form .loginForm input {
+    padding: 12px;
+    font-size: 16px;
+}
+
+.loginForm input:focus {
+    border: 2px solid #0a66c2;
+}
+
+.loginForm .forgotPassword {
+    margin: 24px 0px;
+    color: black;
+    text-decoration: none;
+}
+
+.loginForm .forgotPassword:hover {
+    text-decoration: underline;
+    color: #0a66c2;
+}
+
+form .formSignInButton {
+    background: #0a66c2;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 32px;
+    font-size: 24px;
+}
+
+form .formGoogleSignInButton {
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 32px;
+    font-size: 24px;
+    color: grey;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+form .formGoogleSignInButton:hover {
+    border: 2px solid black;
+    color: black;
+    background-color: rgb(243, 243, 243);
+}
+
+.content img {
+    height: 550px;
+    width: auto;
+    border-radius: 50% 40% 10% 10%;
+}
+
+.divider {
+    margin: 24px;
+}

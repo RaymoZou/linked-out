@@ -1,6 +1,6 @@
 import styles from '../styles/Post.module.css';
 import ThreeDots from '@mui/icons-material/MoreHoriz';
-import DropDownMenu from './DropDownMenu';
+import DropDownMenu from './ui/DropDownMenu';
 import { useEffect, useState, useRef, useContext } from 'react';
 import { db, UserContext, storage } from '../App.js';
 import { deleteDoc, doc } from 'firebase/firestore';
