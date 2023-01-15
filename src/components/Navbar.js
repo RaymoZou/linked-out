@@ -50,8 +50,8 @@ export default function Navbar(props) {
           <button ref={btnRef} onClick={renderDropDown} className={styles.navProfile}>
             <img alt='profile_pic' src={user.photoURL} />
             <div className={styles.navButtonText}>
-              <div>Me</div>
-              <DropDownIcon />
+              {/* <div>Me</div> */}
+              {/* <DropDownIcon /> */}
               <DropDownMenu isOpen={isDropDown}>
                 <ul>
                   <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>

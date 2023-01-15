@@ -11,7 +11,7 @@ export default function Post(props) {
     const currentUser = useContext(UserContext);
     const [isDropDown, setDropDown] = useState(false);
     const btnRef = useRef();
-    const { name, postText, photoURL, postImgURL, uid, imgName } = props.post;
+    const { name, postText, photoURL, postImgURL, uid, imgName, createdAt } = props.post;
     const { postId } = props;
 
     useEffect(() => {
@@ -42,6 +42,7 @@ export default function Post(props) {
         }
     }
 
+    console.log(createdAt);
 
     return <div className={`${styles.outline} ${styles.container}`}>
         <div className={styles.header}>
