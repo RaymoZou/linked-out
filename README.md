@@ -11,5 +11,12 @@ A replication of the popular LinkedIn social media website created using React a
 - User profile picture will occasionally not render correctly
 - App is not responsive at all screen resolutions (currently stable at 1920x1080)
 
+## Images
+![preview 1](https://i.imgur.com/fqHO7R4.png)
+![preview 2](https://i.imgur.com/4PtVmys.png)
+
+
 ## Live Preview
 Feel free to check it out [here](https://linkedout-31478.firebaseapp.com/)! 
+
+
