@@ -19,9 +19,7 @@ export default function Post(props) {
         function closeDropDown(e) {
             if (e.path[0] !== btnRef.current) setDropDown(false);
         }
-
         document.body.addEventListener('click', closeDropDown);
-
         return () => document.body.removeEventListener('click', closeDropDown);
     })
 
@@ -35,7 +33,6 @@ export default function Post(props) {
             const imgRef = ref(storage, `images/${currentUser.uid}/${imgName}`);
             deleteObject(imgRef);
         }
-        // TODO: add image delete THEN post delete
         if (currentUser.uid === uid) {
             const docRef = doc(db, "posts", postId);
             deleteDoc(docRef);

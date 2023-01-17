@@ -7,7 +7,7 @@ import styles from '../styles/Homepage.module.css';
 
 export default function Homepage(props) {
     return (
-        <>
+        <div className={styles.homepageContainer}>
             <div className={styles.homepage}>
                 <div className={styles.navBar}>
                     <div className={styles.header}>Linked<span>out</span></div>
@@ -29,7 +29,7 @@ export default function Homepage(props) {
                             <div className={styles.loginForm}>
                                 <input type="text" placeholder="Email or phone number" />
                                 <br></br>
-                                <input type="password" placeholder="Password" autoComplete="on"/>
+                                <input type="password" placeholder="Password" autoComplete="on" />
                                 <a href="#/" className={styles.forgotPassword}>Forgot password?</a>
                                 <button className={styles.formSignInButton}>Sign in</button>
                                 <hr className={styles.divider} />
@@ -43,6 +43,6 @@ export default function Homepage(props) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

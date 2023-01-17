@@ -6,7 +6,7 @@
 
 .scaffold {
     background-color: white;
-    width: 225px;
+    min-width: 225px;
     height: 400px;
 }
 

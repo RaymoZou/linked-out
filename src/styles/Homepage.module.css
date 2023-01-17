@@ -10,12 +10,18 @@
     color: red;
 }
 
+.homepageContainer {
+    display: flex;
+    justify-content: center;
+}
+
 .homepage {
-    margin-left: 350px;
+    min-width: 1000px;
+    max-width: 1600px;
 }
 
 .navBar {
-    margin-right: 350px;
+    margin-right: 150px;
     display: flex;
     justify-content: space-between;
     gap: 24px;

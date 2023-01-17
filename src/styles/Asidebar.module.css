@@ -1,0 +1,10 @@
+.scaffoldAside {
+    min-width: 315px;
+    height: 600px;
+}
+
+.outline {
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+    background-color: white;
+}
