@@ -5,34 +5,18 @@ import ChatBubbleIcon from '@mui/icons-material/Textsms';
 import BellIcon from '@mui/icons-material/Notifications';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AppsIcon from '@mui/icons-material/Apps';
-import DropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Menu, MenuItem } from '@mui/material';
 
 import styles from '../styles/Navbar.module.css';
-import DropDownMenu from './ui/DropDownMenu';
 import { UserContext } from '../App';
-import { useEffect, useState, useRef, useContext } from 'react';
+import { useState, useContext } from 'react';
 
 export default function Navbar(props) {
 
+  const [anchor, setAnchor] = useState(null);
   const user = useContext(UserContext);
-  const [isDropDown, setDropDown] = useState(false);
-  const btnRef = useRef();
 
-  useEffect(() => {
-
-    function closeDropDown(e) {
-      if (e.path[0] !== btnRef.current) setDropDown(false);
-    }
-
-    document.body.addEventListener('click', closeDropDown);
-
-    return () => document.body.removeEventListener('click', closeDropDown);
-  })
-
-  function renderDropDown(e) {
-    e.stopPropagation();
-    setDropDown(true);
-  }
+  const openPopupMenu = (e) => { setAnchor(e.currentTarget) };
 
   return (
     <div className={styles.navBar}>
@@ -47,16 +31,12 @@ export default function Navbar(props) {
           <div className={styles.navButton}><SuitcaseIcon />Jobs</div>
           <div className={styles.navButton}><ChatBubbleIcon />Messaging</div>
           <div className={styles.navButton}><BellIcon />Notifications</div>
-          <button ref={btnRef} onClick={renderDropDown} className={styles.navProfile}>
+          <button onClick={openPopupMenu} className={styles.navProfile}>
             <img alt='profile_pic' src={user.photoURL} />
             <div className={styles.navButtonText}>
-              {/* <div>Me</div> */}
-              {/* <DropDownIcon /> */}
-              <DropDownMenu isOpen={isDropDown}>
-                <ul>
-                  <div className={styles.signOutButton} onClick={props.signOut}>Sign Out</div>
-                </ul>
-              </DropDownMenu>
+              <Menu open={Boolean(anchor)} anchorEl={anchor}>
+                <MenuItem>Hello</MenuItem>
+              </Menu>
             </div>
           </button>
           <div className={styles.navButton}><AppsIcon />Work</div>

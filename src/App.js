@@ -10,7 +10,7 @@ import styles from './styles/App.module.css';
 
 import { useState, createContext } from 'react';
 
-import firebaseConfig from './firebase.config.js';
+import { firebaseConfig } from './firebase.config';
 
 import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
