@@ -5,19 +5,15 @@ import ChatBubbleIcon from "@mui/icons-material/Textsms";
 import BellIcon from "@mui/icons-material/Notifications";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import AppsIcon from "@mui/icons-material/Apps";
-import DropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Menu, MenuItem } from "@mui/material";
 
 import styles from "../styles/Navbar.module.css";
-import DropDownMenu from "./ui/DropDownMenu";
 import { UserContext } from "../App";
 import { useState, useContext } from "react";
 
 export default function Navbar(props) {
   const user = useContext(UserContext);
-  const [isDropDown, setDropDown] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [isOpen, setOpen] = useState(false);
 
   function handleClick(e) {
     if (anchorEl) return;
