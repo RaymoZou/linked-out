@@ -5,28 +5,14 @@ import PostCreationBar from './components/MainFeed';
 import Asidebar from './components/Asidebar';
 import PostInputContainer from './components/Overlay'
 import PostContainer from './components/PostContainer';
-
 import styles from './styles/App.module.css';
-
 import { useState, createContext } from 'react';
-
-import { firebaseConfig } from './firebase.config';
-
+import { firebaseConfig } from './firebaseConfig.js';
 import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import {
-  addDoc,
-  collection,
-  getFirestore,
-  query,
-  orderBy,
-  limit,
-  serverTimestamp
-} from "firebase/firestore";
+import { addDoc, collection, getFirestore, query, orderBy, limit, serverTimestamp } from "firebase/firestore";
 import { useEffect } from "react";
-
-
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
@@ -34,9 +20,8 @@ const firebaseApp = initializeApp(firebaseConfig);
 export const storage = getStorage(firebaseApp)
 export const auth = getAuth(firebaseApp);
 export const db = getFirestore(firebaseApp);
-const postCollectionRef = collection(db, "posts");
-
 export const UserContext = createContext(null);
+const postCollectionRef = collection(db, "posts");
 
 
 function App() {

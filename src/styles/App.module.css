@@ -5,8 +5,9 @@
 }
 
 .scaffoldMain {
+    /* background-color: yellow; */
     width: 540px;
-    height: 600px;
+    /* height: 600px; */
 }
 
 .outline {
@@ -16,7 +17,9 @@
 }
 
 .scaffoldContainer {
-    margin: 64px 350px;
+    /* background-color: orange; */
+    /* margin: 64px 350px; */
+    /* margin: 64px 0px; */
     display: flex;
     justify-content: center;
     gap: 24px;
