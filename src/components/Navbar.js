@@ -18,8 +18,8 @@ export default function Navbar(props) {
   };
 
   return (
-    <div className={styles.navBar}>
-      <div className={styles.wrapper}>
+    <div className={styles.wrapper}>
+        <div className={styles.navBar}>
         <div className={styles.searchBarContainer}>
           <div className={styles.logo}>out</div>
           <input className={styles.searchBar} placeholder="Search"></input>

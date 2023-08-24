@@ -2,17 +2,12 @@
     display: flex;
     justify-content: center;
     background-color: white;
-    /* position: fixed; */
     width: 100%;
     padding: 8px 0px;
 }
 
 .wrapper {
     display: flex;
-
-    /* TODO: remove temp css */
-    /* background-color: red; */
-    padding: 4px;
 }
 
 .navButtonContainer {
@@ -81,10 +76,11 @@
     background-color: #eef3f8;
     border-radius: 4px;
     width: 250px;
+    outline: none;
 }
 
 .searchBarContainer .searchBar:focus {
-    width: 350px;
+    /* width: 350px; */
 }
 
 .signOutButton {

@@ -1,13 +1,12 @@
 .mainContainer {
+    display: grid;
     background-color: #f3f2ef;
     height: 100vh;
     overflow: auto;
 }
 
 .scaffoldMain {
-    /* background-color: yellow; */
     width: 540px;
-    /* height: 600px; */
 }
 
 .outline {
@@ -17,10 +16,8 @@
 }
 
 .scaffoldContainer {
-    /* background-color: orange; */
-    /* margin: 64px 350px; */
-    /* margin: 64px 0px; */
     display: flex;
     justify-content: center;
     gap: 24px;
+    padding: 24px;
 }

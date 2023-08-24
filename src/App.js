@@ -77,7 +77,7 @@ function LoggedIn() {
             <PostCreationBar setOverlay={setOverlay} />
             <PostContainer posts={posts} />
           </MidContainer>
-          <Asidebar />
+          {/* <Asidebar /> */}
         </div>
       </div>
       <PostInputContainer isOpen={isOverlayOn} setOverlay={setOverlay} uploadPost={uploadPost} />
