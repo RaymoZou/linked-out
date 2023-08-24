@@ -69,25 +69,26 @@ function LoggedIn() {
 
   return (
     <>
-      <div className={styles.mainContainer}>
+      <MainContainer>
         <Navbar signOut={() => auth.signOut()}></Navbar>
-        <div className={styles.scaffoldContainer}>
+        <ScaffoldContainer>
           <Sidebar />
           <MidContainer>
             <PostCreationBar setOverlay={setOverlay} />
             <PostContainer posts={posts} />
           </MidContainer>
           {/* <Asidebar /> */}
-        </div>
-      </div>
+        </ScaffoldContainer>
+      </MainContainer>
       <PostInputContainer isOpen={isOverlayOn} setOverlay={setOverlay} uploadPost={uploadPost} />
     </>
   )
 }
 
-function MidContainer(props) {
-  return <div className={styles.scaffoldMain}> {props.children}
-  </div>
-}
+function ScaffoldContainer(props) { return <div className={styles.scaffoldContainer}> {props.children} </div> }
+
+function MainContainer(props) { return <div className={styles.mainContainer}> {props.children} </div> }
+
+function MidContainer(props) { return <div className={styles.scaffoldMain}> {props.children}  </div> }
 
 export default App;
