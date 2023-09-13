@@ -33,6 +33,6 @@ export const firebaseConfig = {
 
 
 ## Live Preview
-Feel free to check it out [here](https://linkedout-31478.firebaseapp.com/)! 
+Feel free to check it out [here](https://linked-out-raymozou.vercel.app/)! 
 
 
