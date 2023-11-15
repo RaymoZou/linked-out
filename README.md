@@ -1,15 +1,15 @@
 # LinkedOut
-A replication of the popular LinkedIn social media website created using React and Firebase.
+A replication of the popular LinkedIn social media website created using React to render the front-end view and Firebase's Firestore database to store user information such as posts.
 
 ## Core Features
 - User login with Google authentication
 - Create and read posts made by other users
-- Attach an image to a posts
+- Attach an image to a post
 - Delete posts
 
 ## Known Issues
 - User profile picture will occasionally not render correctly
-- App is not responsive at all screen resolutions (currently stable at 1920x1080)
+- The app is not responsive at all screen resolutions (currently stable at 1920x1080)
 
 ## How To Run Locally:
 1. Clone repository with ```git clone https://github.com/RaymoZou/linked-out.git```
