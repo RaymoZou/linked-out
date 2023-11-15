@@ -128,3 +128,4 @@ yarn-error.log*
 
 #firebase configuration
 firebase.config.js
+.firebase
