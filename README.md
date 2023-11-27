@@ -35,4 +35,8 @@ export const firebaseConfig = {
 ## Live Preview
 Feel free to check it out [here](https://linked-out-raymozou.vercel.app/)! 
 
+## What's Next?
+- Replace Firebase hosting and database with GitHub Pages and MongoDB
+- Replace plain CSS files with Tailwind CSS
+
 
