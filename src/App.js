@@ -2,7 +2,6 @@ import LoggedOut from './components/Homepage';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import PostCreationBar from './components/MainFeed';
-import Asidebar from './components/Asidebar';
 import PostInputContainer from './components/Overlay'
 import PostContainer from './components/PostContainer';
 import styles from './styles/App.module.css';
@@ -77,7 +76,6 @@ function LoggedIn() {
             <PostCreationBar setOverlay={setOverlay} />
             <PostContainer posts={posts} />
           </MidContainer>
-          {/* <Asidebar /> */}
         </ScaffoldContainer>
       </MainContainer>
       <PostInputContainer isOpen={isOverlayOn} setOverlay={setOverlay} uploadPost={uploadPost} />
