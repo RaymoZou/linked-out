@@ -18,11 +18,9 @@ export default function Sidebar() {
                 <div className={styles.buttonContainer}>
                     <div className={styles.button}>
                         <div>Connections</div>
-                        {/* <div>42</div> */}
                     </div>
                     <div className={styles.button}>
                         <div>Who's viewed your profile</div>
-                        {/* <div className={styles.profileViewCount}>502</div> */}
                     </div>
                 </div>
             </div>

@@ -45,11 +45,6 @@ export default function Post(props) {
         {currentUser.uid === uid ? (
           <div onClick={handleClick} className={styles.horizontalButton}>
             <ThreeDots />
-            {/* <DropDownMenu isOpen={isDropDown}>
-                        <ul onClick={deletePost} className={styles.deleteButton}>
-                            <li>Delete post</li>
-                        </ul>
-                    </DropDownMenu> */}
           </div>
         ) : null}
       </div>
