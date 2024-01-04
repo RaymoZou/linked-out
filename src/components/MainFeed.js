@@ -1,5 +1,3 @@
-import styles from '../styles/MainFeed.module.css';
-
 import { useContext } from 'react';
 import { UserContext } from '../App';
 
@@ -14,10 +12,10 @@ export default function MainFeed({ setOverlay, docs }) {
 
     return (
         <>
-            <div className={styles.mainInput}>
-                <div className={styles.topContainer}>
+            <div >
+                <div >
                     <img src={photoURL} alt="profile_pic" />
-                    <button onClick={postModeOn} className={styles.postButton}>Start a post</button>
+                    <button onClick={postModeOn} >Start a post</button>
                 </div>
             </div>
             <hr />

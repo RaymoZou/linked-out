@@ -1,4 +1,3 @@
-import styles from "../styles/Post.module.css";
 import ThreeDots from "@mui/icons-material/MoreHoriz";
 import DropDownMenu from "./ui/DropDownMenu";
 import { useEffect, useState, useRef, useContext } from "react";
@@ -36,14 +35,14 @@ export default function Post(props) {
   }
 
   return (
-    <div className={`${styles.outline} ${styles.container}`}>
-      <div className={styles.header}>
-        <div className={styles.posterInfo}>
-          <img className={styles.profileImg} src={photoURL} alt="" />
-          <div className={styles.nameContainer}>{name}</div>
+    <div >
+      <div>
+        <div >
+          <img src={photoURL} alt="" />
+          <div >{name}</div>
         </div>
         {currentUser.uid === uid ? (
-          <div onClick={handleClick} className={styles.horizontalButton}>
+          <div onClick={handleClick} >
             <ThreeDots />
           </div>
         ) : null}
@@ -64,9 +63,9 @@ export default function Post(props) {
       >
         <MenuItem onClick={deletePost}>Delete post</MenuItem>
       </Menu>
-      <div className={styles.textContainer}>{postText}</div>
+      <div >{postText}</div>
       {postImgURL ? (
-        <img className={styles.postImg} src={postImgURL} alt="post_image" />
+        <img src={postImgURL} alt="post_image" />
       ) : null}
     </div>
   );

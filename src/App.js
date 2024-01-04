@@ -4,7 +4,6 @@ import Sidebar from './components/Sidebar';
 import PostCreationBar from './components/MainFeed';
 import PostInputContainer from './components/Overlay'
 import PostContainer from './components/PostContainer';
-import styles from './styles/App.module.css';
 import { useState, createContext } from 'react';
 import { firebaseConfig } from './firebaseConfig.js';
 import { initializeApp } from 'firebase/app';
@@ -83,10 +82,10 @@ function LoggedIn() {
   )
 }
 
-function ScaffoldContainer(props) { return <div className={styles.scaffoldContainer}> {props.children} </div> }
+function ScaffoldContainer(props) { return <div > {props.children} </div> }
 
-function MainContainer(props) { return <div className={styles.mainContainer}> {props.children} </div> }
+function MainContainer(props) { return <div > {props.children} </div> }
 
-function MidContainer(props) { return <div className={styles.scaffoldMain}> {props.children}  </div> }
+function MidContainer(props) { return <div > {props.children}  </div> }
 
 export default App;

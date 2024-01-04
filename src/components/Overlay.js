@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ImageIcon from "@mui/icons-material/ImageRounded";
-import styles from "../styles/Overlay.module.css";
 import CloseIcon from '@mui/icons-material/Close';
 import { UserContext, storage } from "../App";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
@@ -17,7 +16,7 @@ export default function PostInputContainer(props) {
   const handleOutsideClick = () => setOverlay(false);
 
   return isOpen ? (
-    <div onClick={handleOutsideClick} className={styles.overlay}>
+    <div onClick={handleOutsideClick}>
       <PostInput
         displayName={displayName}
         photoURL={photoURL}
@@ -66,23 +65,21 @@ function PostInput(props) {
   return (
     <div
       onClick={handleInsideClick}
-      className={`${styles.createPost} ${styles.outline}`}
     >
       <form>
-        <div className={styles.header}>
+        <div >
           <div>Create a post</div>
           <button
-            className={styles.closeButton}
             onClick={() => setOverlay(false)}
           >
             <CloseIcon />
           </button>
         </div>
-        <div className={styles.profilePicContainer}>
+        <div >
           <img src={profileImgURL} alt="" />
           <div>{displayName}</div>
         </div>
-        <div className={styles.formContent}>
+        <div >
           <textarea
             name=""
             id=""
@@ -92,9 +89,9 @@ function PostInput(props) {
             onChange={updatePostText}
             value={postText}
           ></textarea>
-          <div className={styles.postButtonContainer}>
-            <div className={styles.fileUploadContainer}>
-              <label className={styles.fileUploadButton} htmlFor="file-upload">
+          <div >
+            <div >
+              <label  htmlFor="file-upload">
                 <ImageIcon />
                 <input
                   id="file-upload"
@@ -108,7 +105,6 @@ function PostInput(props) {
             </div>
             <button
               disabled={postText === ""}
-              className={styles.submitButton}
               onClick={postToFirebase}
             >
               Post
