@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { UserContext } from '../App';
 
-export default function MainFeed({ setOverlay, docs }) {
+export default function MainFeed({ setOverlay }) {
 
     const { photoURL } = useContext(UserContext);
 

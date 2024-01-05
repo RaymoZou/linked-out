@@ -1,6 +1,5 @@
 import ThreeDots from "@mui/icons-material/MoreHoriz";
-import DropDownMenu from "./ui/DropDownMenu";
-import { useEffect, useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import { db, UserContext, storage } from "../App.js";
 import { deleteDoc, doc } from "firebase/firestore";
 import { ref, deleteObject } from "firebase/storage";
@@ -9,9 +8,7 @@ import { Menu, MenuItem } from "@mui/material";
 export default function Post(props) {
   const currentUser = useContext(UserContext);
   const [anchorEl, setAnchorEl] = useState(null);
-  const btnRef = useRef();
-  const { name, postText, photoURL, postImgURL, uid, imgName, createdAt } =
-    props.post;
+  const { name, postText, photoURL, postImgURL, uid, imgName } = props.post;
   const { postId } = props;
 
   function handleClick(e) {
@@ -19,7 +16,7 @@ export default function Post(props) {
     setAnchorEl(e.currentTarget);
   }
 
-  const handleClickAway = () => {
+  function handleClickAway() {
     setAnchorEl(null);
   };
 
@@ -35,9 +32,9 @@ export default function Post(props) {
   }
 
   return (
-    <div >
+    <div>
       <div>
-        <div >
+        <div>
           <img src={photoURL} alt="" />
           <div >{name}</div>
         </div>
@@ -63,7 +60,7 @@ export default function Post(props) {
       >
         <MenuItem onClick={deletePost}>Delete post</MenuItem>
       </Menu>
-      <div >{postText}</div>
+      <div>{postText}</div>
       {postImgURL ? (
         <img src={postImgURL} alt="post_image" />
       ) : null}

@@ -1,11 +1,3 @@
-import Explore from '@mui/icons-material/Explore';
-import GroupIcon from '@mui/icons-material/Group';
-import SchoolIcon from '@mui/icons-material/School';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-
-// import temp_styles from '../styles/Homepage.module.css';
-import styles from '../index.css';
-
 export default function Homepage(props) {
     return (
         <>
