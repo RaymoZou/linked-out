@@ -20,6 +20,5 @@ export default function MainFeed({ setOverlay }) {
             </div>
             <hr />
         </>
-
     )
 }
