@@ -24,65 +24,65 @@ const postCollectionRef = collection(db, "posts");
 
 function App() {
 
-  useEffect(() => {
-    document.title = "LinkedOut";
-  })
+	useEffect(() => {
+		document.title = "LinkedOut";
+	})
 
-  const [user] = useAuthState(auth);
+	const [user] = useAuthState(auth);
 
-  function signInWithGoogle() {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-  }
+	function signInWithGoogle() {
+		const provider = new GoogleAuthProvider();
+		signInWithPopup(auth, provider);
+	}
 
-  return (
-    <div>
-      {user ?
-        <UserContext.Provider value={user}>
-          <LoggedIn />
-        </UserContext.Provider>
-        :
-        <LoggedOut signInMethod={signInWithGoogle} />}
-    </div>
-  )
+	return (
+		<div>
+			{user ?
+				<UserContext.Provider value={user}>
+					<LoggedIn />
+				</UserContext.Provider>
+				:
+				<LoggedOut signInMethod={signInWithGoogle} />}
+		</div>
+	)
 }
 
 function LoggedIn() {
 
-  const [isOverlayOn, setOverlay] = useState(false);
-  const q = query(postCollectionRef, orderBy('createdAt', 'desc'), limit(20));
-  const [posts] = useCollection(q);
+	const [isOverlayOn, setOverlay] = useState(false);
+	const q = query(postCollectionRef, orderBy('createdAt', 'desc'), limit(20));
+	const [posts] = useCollection(q);
 
-  function uploadPost(name, photoURL, postText, uid, postImgURL, imgName) {
-    addDoc(postCollectionRef, {
-      name: name,
-      photoURL: photoURL,
-      postText: postText,
-      createdAt: serverTimestamp(),
-      uid: uid,
-      postImgURL: postImgURL,
-      imgName: imgName
-    })
-  }
+	function uploadPost(name, photoURL, postText, uid, postImgURL, imgName) {
+		addDoc(postCollectionRef, {
+			name: name,
+			photoURL: photoURL,
+			postText: postText,
+			createdAt: serverTimestamp(),
+			uid: uid,
+			postImgURL: postImgURL,
+			imgName: imgName
+		})
+	}
 
-  return (
-    <>
-      <MainContainer>
-        <Navbar signOut={() => auth.signOut()}></Navbar>
-        <ScaffoldContainer>
-          <Sidebar />
-          <MidContainer>
-            <PostCreationBar setOverlay={setOverlay} />
-            <PostContainer posts={posts} />
-          </MidContainer>
-        </ScaffoldContainer>
-      </MainContainer>
-      <PostInputContainer isOpen={isOverlayOn} setOverlay={setOverlay} uploadPost={uploadPost} />
-    </>
-  )
+	return (
+		<>
+			<MainContainer>
+				<Navbar signOut={() => auth.signOut()}></Navbar>
+				{/* <ScaffoldContainer> */}
+				{/* <Sidebar /> */}
+				<MidContainer>
+					<PostCreationBar setOverlay={setOverlay} />
+					<PostContainer posts={posts} />
+				</MidContainer>
+				{/* </ScaffoldContainer> */}
+			</MainContainer>
+			{/* <PostInputContainer isOpen={isOverlayOn} setOverlay={setOverlay} uploadPost={uploadPost} /> */}
+		</>
+	)
 }
 
-function ScaffoldContainer(props) { return <div > {props.children} </div> }
+{/* function ScaffoldContainer(props) { return <div > {props.children} </div> } */}
 
 function MainContainer(props) { return <div > {props.children} </div> }
 
