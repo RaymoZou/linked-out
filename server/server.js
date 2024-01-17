@@ -1,4 +1,7 @@
-const express = require('express')
+const express = require('express');
+const mongodb = require('./database');
+require('dotenv').config()
+
 const app = express()
 const port = 3000
 
