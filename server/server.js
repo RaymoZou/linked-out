@@ -1,4 +1,5 @@
 require('dotenv').config()
+var cors = require('cors');
 const express = require('express');
 require('./database');
 const Post = require('./posts');
@@ -6,6 +7,7 @@ const app = express()
 
 // for parsing JSON requests
 app.use(express.json());
+app.use(cors());
 
 // TODO:
 app.get('/', (req, res) => {
@@ -32,9 +34,15 @@ app.route('/post/:id')
 			res.sendStatus(200);
 		} catch (err) {
 			console.error(err);
-			res.sendStatus(500);
+			res.sendstatus(500);
 		}
 	})
+
+app.get('/posts', async (req, res) => {
+	const allPosts = await Post.find();
+	console.log(allPosts);
+	res.status(200).json({ message: "showing all the posts" });
+})
 
 app.listen(process.env.PORT, () => {
 	console.log(`Listening on port: ${process.env.PORT}`)
