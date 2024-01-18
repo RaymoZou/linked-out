@@ -1,9 +1,16 @@
 require('dotenv').config()
 var cors = require('cors');
 const express = require('express');
+const bcrypt = require('bcrypt');
 require('./database');
 const Post = require('./posts');
+const User = require('./users');
+
 const app = express()
+
+// for bcrypt hashing
+// TODO: maybe make this a dotenv variable?
+const saltRounds = 10;
 
 // for parsing JSON requests
 app.use(express.json());
@@ -25,24 +32,73 @@ app.route('/post/:id')
 			res.sendStatus(500);
 		}
 	})
-	.post(async (req, res) => {
-		try {
-			const { name, text } = req.body
-			const post = new Post({ name, text })
-			await post.save();
-			console.log("post has been saved");
-			res.sendStatus(200);
-		} catch (err) {
-			console.error(err);
-			res.sendstatus(500);
-		}
-	})
+// .post(async (req, res) => {
+// 	try {
+// 		const { name, text } = req.body
+// 		const post = new Post({ name, text })
+// 		await post.save();
+// 		console.log("post has been saved");
+// 		res.sendStatus(200);
+// 	} catch (err) {
+// 		console.error(err);
+// 		res.sendStatus(500);
+// 	}
+// })
 
-app.get('/posts', async (req, res) => {
+app.get('/post', async (req, res) => {
 	const allPosts = await Post.find();
-	console.log(allPosts);
-	res.status(200).json({ message: "showing all the posts" });
+	res.status(200).json(allPosts);
 })
+
+app.post('/post', async (req, res) => {
+	try {
+		const { name, text } = req.body
+		const post = new Post({ name, text })
+		await post.save();
+		console.log("post has been saved");
+		res.sendStatus(200);
+	} catch (err) {
+		console.error(err);
+		res.sendStatus(500);
+	}
+})
+
+app.post('/signup', async (req, res) => {
+	try {
+		const { username, password } = req.body;
+		// console.log(`name: ${username}, raw_password: ${password}`)
+		bcrypt.hash(password, saltRounds, async (err, hash) => {
+			if (err) throw err;
+			try {
+				const user = new User({ username, hash });
+				await user.save();
+				res.sendStatus(200);
+			} catch (err) {
+				res.status(500).send("error creating the user");
+				console.error();
+			}
+		});
+	} catch (err) {
+		console.error(err);
+		res.sendStatus(500)
+	}
+});
+
+app.post('/login', async (req, res) => {
+	try {
+		const { username, password } = req.body;
+		const user = await User.findOne({ username });
+		bcrypt.compare(password, user.hash, async (err, result) => {
+			result ? res.status(200).json({ message: "user authorized" })
+				:
+				res.status(401).json({ message: "user unauthorized" });
+		})
+	} catch (err) {
+		console.log(err);
+		res.sendStatus(500)
+	}
+})
+
 
 app.listen(process.env.PORT, () => {
 	console.log(`Listening on port: ${process.env.PORT}`)
