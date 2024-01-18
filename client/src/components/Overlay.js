@@ -1,6 +1,4 @@
 import { useState } from "react";
-import ImageIcon from "@mui/icons-material/ImageRounded";
-import CloseIcon from '@mui/icons-material/Close';
 import { UserContext, storage } from "../App";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { useContext } from "react";
@@ -72,7 +70,6 @@ function PostInput(props) {
           <button
             onClick={() => setOverlay(false)}
           >
-            <CloseIcon />
           </button>
         </div>
         <div >
@@ -92,7 +89,6 @@ function PostInput(props) {
           <div >
             <div >
               <label  htmlFor="file-upload">
-                <ImageIcon />
                 <input
                   id="file-upload"
                   type="file"
