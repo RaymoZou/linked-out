@@ -88,11 +88,15 @@ app.post('/login', async (req, res) => {
 	try {
 		const { username, password } = req.body;
 		const user = await User.findOne({ username });
-		bcrypt.compare(password, user.hash, async (err, result) => {
-			result ? res.status(200).json({ message: "user authorized" })
-				:
-				res.status(401).json({ message: "user unauthorized" });
-		})
+		if (user) {
+			bcrypt.compare(password, user.hash, async (err, result) => {
+				result ? res.status(200).json({ message: "user authorized" })
+					:
+					res.status(401).json({ message: "user unauthorized" });
+			})
+		} else {
+			res.status(401).json({ message: "user not found" })
+		}
 	} catch (err) {
 		console.log(err);
 		res.sendStatus(500)
