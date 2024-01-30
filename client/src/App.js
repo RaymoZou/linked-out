@@ -1,22 +1,16 @@
-import LoggedOut from './components/Homepage';
+import LoggedOut from './components/LoginPage.js';
 import Navbar from './components/Navbar';
 import PostCreationBar from './components/MainFeed';
 import PostContainer from './components/PostContainer';
-import { createContext } from 'react';
 import { firebaseConfig } from './firebaseConfig.js';
 import { initializeApp } from 'firebase/app';
-import { getStorage } from 'firebase/storage';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { addDoc, collection, getFirestore, query, orderBy, limit, serverTimestamp } from "firebase/firestore";
-import { useEffect } from "react";
+import { getAuth } from 'firebase/auth';
+import { useEffect, createContext } from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);
 export const UserContext = createContext(null);
-// export const storage = getStorage(firebaseApp)
-// export const db = getFirestore(firebaseApp);
-
 
 function App() {
 
@@ -26,11 +20,6 @@ function App() {
 
 	const [user] = useAuthState(auth);
 
-	function signInWithGoogle() {
-		const provider = new GoogleAuthProvider();
-		signInWithPopup(auth, provider);
-	}
-
 	return (
 		<div>
 			{user ?
@@ -38,14 +27,14 @@ function App() {
 					<LoggedIn />
 				</UserContext.Provider>
 				:
-				<LoggedOut signInMethod={signInWithGoogle} />}
+				<LoggedOut />}
 		</div>
 	)
 }
 
 function LoggedIn() {
 
-	useEffect(() => console.log(localStorage.getItem("jwt")))
+	useEffect(() => console.log("jwt cookie:", localStorage.getItem("jwt")))
 
 	return (
 		<>
