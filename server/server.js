@@ -9,41 +9,30 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const app = express();
+const morgan = require('morgan');
 
+// TODO:
+// create protected routes with valid JWTs (such as Login Page, POST requests for creating posts)
+// and general routes (such as the POST login requests)
 
-// parse requests in json format
+// middleware
 app.use(express.json());
-// cross origin cookies
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
 }));
+app.use(morgan('dev'));
 
-// for bcrypt hashing
-// TODO: maybe make this a dotenv variable?
-const saltRounds = 10;
-// jwt with payload claim (payload is typically a JSON object)
 function generateJWT(payload) {
     const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
         // TODO: change expiration date
-        expiresIn: "10s"
+        expiresIn: "120s"
     });
     console.log(token);
     return token;
 }
 
 app.use(cookieParser());
-app.use((req, res, next) => {
-    // verify jwt
-    const token = req.cookies.jwt_token;
-    if (token) {
-        jwt.verify(token, process.env.JWT_SECRET_KEY, function(err, decoded) {
-            if (err) console.error("jwt error");
-            if (decoded) console.log("jwt is good");
-        });
-    }
-    next()
-});
 
 app.get('/', (req, res) => {
     res.status(200).send("hello world");
@@ -51,12 +40,13 @@ app.get('/', (req, res) => {
 
 app.get('/protected-route', (req, res) => {
     // check if jwt
-    const token = req.cookies.jwt_token;
-    const isValid = jwt.verify(token, process.env.JWT_SECRET_KEY)
-    if (isValid) {
-        res.status(200).send("authenticated route");
-    } else {
-        res.status(400).send("not authenticated!");
+    try {
+        const token = req.cookies.jwt_token;
+        const decoded_token = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        res.status(200).send("jwt is valid");
+    } catch (error) {
+        console.error("jwt is not valid");
+        res.status(400).send("jwt is not valid");
     }
 });
 
@@ -75,7 +65,7 @@ app.route('/post/:id')
 app.get('/post', async (req, res) => {
     const allPosts = await Post.find();
     res.status(200).json(allPosts);
-})
+});
 
 app.post('/post', async (req, res) => {
     try {
@@ -93,8 +83,7 @@ app.post('/post', async (req, res) => {
 app.post('/signup', async (req, res) => {
     try {
         const { username, password } = req.body;
-        // console.log(`name: ${username}, raw_password: ${password}`)
-        bcrypt.hash(password, saltRounds, async (err, hash) => {
+        bcrypt.hash(password, 10, async (err, hash) => {
             if (err) throw err;
             try {
                 const user = new User({ username, hash });
@@ -117,9 +106,9 @@ app.post('/login', async (req, res) => {
         const user = await User.findOne({ username });
         if (user) {
             bcrypt.compare(password, user.hash, async (err, result) => {
-                // result ?
                 if (result) {
-                    res.status(200).cookie('jwt_token', generateJWT({ username })).send('cookie set');
+                    // set httpOnly to make cookie inaccessible client side
+                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true }).send('cookie set');
                 } else {
                     res.status(401).json({ message: "user unauthorized" });
                 }
@@ -130,6 +119,17 @@ app.post('/login', async (req, res) => {
     } catch (err) {
         console.log(err);
         res.sendStatus(500)
+    }
+})
+
+// send 200 on successful cookie clear - 500 otherwise
+app.get('/logout', (req, res) => {
+    try {
+        // TODO: should jwt_token be a constant string?
+        console.log(req.cookies);
+        res.clearCookie('jwt_token', { httpOnly: true }).sendStatus(200);
+    } catch (err) {
+        res.statusStatus(500);
     }
 })
 

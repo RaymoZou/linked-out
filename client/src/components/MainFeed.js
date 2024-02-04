@@ -25,7 +25,7 @@ export default function MainFeed() {
 
 	return (
 		<div className='flex m-4 gap-4 items-end bg-blue-200 p-4 justify-center' onSubmit={handleSubmit}>
-			<img src={photoURL} alt="profile_pic" className="rounded" />
+			{/* <img src={photoURL} alt="profile_pic" className="rounded" /> */}
 			<form name="form" className='flex gap-4'>
 				<input onChange={onChange}
 					value={postText}
