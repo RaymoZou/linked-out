@@ -16,7 +16,7 @@ export default function MainFeed() {
         e.preventDefault();
         try {
             const data = { text: postText, name: username };
-            axios.post("http://localhost:3001/post", data);
+            axios.post("/post", data);
             setPostText('');
         } catch (err) {
             console.error(err)

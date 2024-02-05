@@ -10,7 +10,7 @@ export default function PostContainer() {
 		const fetchData = async () => {
 			try {
 				// TODO: remove constant api string
-				const response = await axios.get("http://localhost:3001/post");
+				const response = await axios.get("/post");
 				setPosts(response.data);
 			} catch (err) {
 				console.error(err);

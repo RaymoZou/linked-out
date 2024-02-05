@@ -5,7 +5,7 @@ export default function LoginPage({ setLoginStatus }) {
         e.preventDefault();
         const username = e.target.username.value
         const password = e.target.password.value
-        const res = await axios.post(`http://localhost:3001/login`, { username, password }, { withCredentials: true });
+        const res = await axios.post(`/login`, { username, password }, { withCredentials: true });
         setLoginStatus(res.status === 200);
     }
 

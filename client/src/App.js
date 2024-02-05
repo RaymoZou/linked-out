@@ -8,10 +8,14 @@ import { getAuth } from 'firebase/auth';
 import { useEffect, createContext, useState } from "react";
 import axios from 'axios';
 
+// configure base url for axios
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
+
 const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);
 export const UserContext = createContext(null);
 
+// TODO: fix the inconsistent rendering (has something to do with when setUser and setLoginStatus)
 function App() {
 
     // user object contains the following fields:
@@ -23,9 +27,12 @@ function App() {
         document.title = "LinkedOut";
 
         async function validateJWT() {
-            const res = await axios.get('http://localhost:3001/protected-route', { withCredentials: true });
-            setUser({ username: res.data.username });
-            setLoginStatus(res.status === 200);
+            try {
+                const res = await axios.get('/protected-route', { withCredentials: true });
+                if (res.status === 200) setUser({ username: res.data.username });
+            } catch (error) {
+                console.error("error validating jwt");
+            }
         };
 
         validateJWT();
@@ -33,9 +40,9 @@ function App() {
 
     return (
         <div>
-            {loginStatus ?
+            {user ?
                 <UserContext.Provider value={user}>
-                    <LoggedIn setLoginStatus={setLoginStatus} />
+                    <LoggedIn setUser={setUser} />
                 </UserContext.Provider>
                 :
                 <LoginPage setLoginStatus={setLoginStatus} />}
@@ -43,13 +50,11 @@ function App() {
     )
 }
 
-function LoggedIn({ setLoginStatus }) {
-
-    // TODO: this only sets the view of the user being logged out (user will still be logged in as long as jwt is valid)
+function LoggedIn({ setUser }) {
 
     async function logout() {
-        const res = await axios.get('http://localhost:3001/logout', { withCredentials: true });
-        if (res.status === 200) setLoginStatus(false);
+        const res = await axios.get('/logout', { withCredentials: true });
+        if (res.status === 200) setUser(null);
     };
 
     return (
