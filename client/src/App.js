@@ -6,16 +6,11 @@ import { firebaseConfig } from './firebaseConfig.js';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { useEffect, createContext, useState } from "react";
-import { useAuthState } from 'react-firebase-hooks/auth';
 import axios from 'axios';
 
 const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);
 export const UserContext = createContext(null);
-
-
-// TODO: remove this test user
-const testUser = { username: "jason", photoURL: null }
 
 function App() {
 
@@ -28,9 +23,9 @@ function App() {
         document.title = "LinkedOut";
 
         async function validateJWT() {
-            const user = await axios.get('http://localhost:3001/protected-route', { withCredentials: true });
-            setUser(testUser);
-            setLoginStatus(user.status === 200);
+            const res = await axios.get('http://localhost:3001/protected-route', { withCredentials: true });
+            setUser({ username: res.data.username });
+            setLoginStatus(res.status === 200);
         };
 
         validateJWT();
