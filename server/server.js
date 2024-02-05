@@ -26,7 +26,7 @@ app.use(morgan('dev'));
 function generateJWT(payload) {
     const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
         // TODO: change expiration date
-        expiresIn: "120s"
+        expiresIn: "30 days"
     });
     console.log(token);
     return token;
@@ -43,7 +43,7 @@ app.get('/protected-route', (req, res) => {
     try {
         const token = req.cookies.jwt_token;
         const decoded_token = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        res.status(200).send("jwt is valid");
+        res.status(200).send(decoded_token);
     } catch (error) {
         console.error("jwt is not valid");
         res.status(400).send("jwt is not valid");
