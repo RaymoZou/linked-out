@@ -1,10 +1,8 @@
-import { useContext, useState } from 'react';
-import { UserContext } from '../App';
+import { useState } from 'react';
 import axios from 'axios';
 
 export default function MainFeed() {
 
-    const { username } = useContext(UserContext);
     const [postText, setPostText] = useState("");
 
     function onChange(e) {
@@ -15,8 +13,8 @@ export default function MainFeed() {
     function handleSubmit(e) {
         e.preventDefault();
         try {
-            const data = { text: postText, name: username };
-            axios.post("/post", data);
+            const data = { text: postText };
+            axios.post("/post", data, { withCredentials: true });
             setPostText('');
         } catch (err) {
             console.error(err)

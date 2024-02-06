@@ -69,8 +69,11 @@ app.get('/post', async (req, res) => {
 
 app.post('/post', async (req, res) => {
     try {
-        const { name, text } = req.body
-        const post = new Post({ name, text })
+        // get username from jwt payload (if valid)
+        const decoded_token = jwt.verify(req.cookies.jwt_token, process.env.JWT_SECRET_KEY);
+        const username = decoded_token.username;
+        const { text } = req.body;
+        const post = new Post({ name: username, text })
         await post.save();
         console.log("post has been saved");
         res.sendStatus(200);
