@@ -21,7 +21,6 @@ function App() {
     // user object contains the following fields:
     // username: unique identifier string for the user
     const [user, setUser] = useState(null);
-    const [loginStatus, setLoginStatus] = useState(false);
 
     useEffect(() => {
         document.title = "LinkedOut";
@@ -40,12 +39,7 @@ function App() {
 
     return (
         <div>
-            {user ?
-                <UserContext.Provider value={user}>
-                    <LoggedIn setUser={setUser} />
-                </UserContext.Provider>
-                :
-                <LoginPage setLoginStatus={setLoginStatus} />}
+            {user ? <LoggedIn setUser={setUser} /> : <LoginPage setUser={setUser} />}
         </div>
     )
 }

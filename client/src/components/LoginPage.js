@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export default function LoginPage({ setLoginStatus }) {
+export default function LoginPage({ setUser }) {
     async function login(e) {
         e.preventDefault();
         const username = e.target.username.value
         const password = e.target.password.value
         const res = await axios.post(`/login`, { username, password }, { withCredentials: true });
-        setLoginStatus(res.status === 200);
+        setUser({ username });
     }
 
     return (
