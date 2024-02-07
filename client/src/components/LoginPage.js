@@ -6,11 +6,11 @@ export default function LoginPage({ setUser }) {
         const username = e.target.username.value
         const password = e.target.password.value
         const res = await axios.post(`/login`, { username, password }, { withCredentials: true });
-        setUser({ username });
+        if (res.status === 200) setUser({ username });
     }
 
     return (
-        <div className='flex justify-center items-center flex-col bg-blue-100 h-screen gap-5'>
+        <div className='flex justify-center items-center flex-col h-screen gap-5'>
             <form onSubmit={login} className="flex flex-col gap-2">
                 <input id="username" type="text" placeholder="username" className="p-2 rounded outline-none" autoComplete="on" />
                 <input id="password" type="password" placeholder="password" className="p-2 rounded outline-none" autoComplete="on" />

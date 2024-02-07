@@ -21,6 +21,7 @@ function App() {
     // user object contains the following fields:
     // username: unique identifier string for the user
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         document.title = "LinkedOut";
@@ -29,17 +30,24 @@ function App() {
             try {
                 const res = await axios.get('/protected-route', { withCredentials: true });
                 if (res.status === 200) setUser({ username: res.data.username });
+                setLoading(false);
             } catch (error) {
                 console.error("error validating jwt");
+                setLoading(false);
             }
         };
 
         validateJWT();
     }, [])
 
+    if (loading) {
+        // return <div>loading...</div>
+        return null;
+    }
+
     return (
-        <div>
-            {user ? <LoggedIn setUser={setUser} /> : <LoginPage setUser={setUser} />}
+        <div className="bg-blue-100">
+            {user && !loading ? <LoggedIn setUser={setUser} /> : <LoginPage setUser={setUser} />}
         </div>
     )
 }
