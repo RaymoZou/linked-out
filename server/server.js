@@ -51,37 +51,58 @@ app.get('/protected-route', (req, res) => {
 });
 
 // TODO: proper error handling
-app.route('/post/:id')
+// app.route('/post/:id')
+//     .get(async (req, res) => {
+//         try {
+//             const post = await Post.findById(req.params.id);
+//             res.status(200).json(post);
+//         } catch (err) {
+//             console.error(err);
+//             res.sendStatus(500);
+//         }
+//     })
+//
+
+// /post routing 
+app.route('/post')
     .get(async (req, res) => {
+        const allPosts = await Post.find();
+        res.status(200).json(allPosts);
+    })
+    .post(async (req, res) => {
         try {
-            const post = await Post.findById(req.params.id);
-            res.status(200).json(post);
+            // get username from jwt payload (if valid)
+            const decoded_token = jwt.verify(req.cookies.jwt_token, process.env.JWT_SECRET_KEY);
+            const username = decoded_token.username;
+            const { text } = req.body;
+            const post = new Post({ name: username, text })
+            await post.save();
+            console.log("post has been saved");
+            res.sendStatus(200);
         } catch (err) {
             console.error(err);
             res.sendStatus(500);
         }
     })
-
-app.get('/post', async (req, res) => {
-    const allPosts = await Post.find();
-    res.status(200).json(allPosts);
-});
-
-app.post('/post', async (req, res) => {
-    try {
-        // get username from jwt payload (if valid)
-        const decoded_token = jwt.verify(req.cookies.jwt_token, process.env.JWT_SECRET_KEY);
-        const username = decoded_token.username;
-        const { text } = req.body;
-        const post = new Post({ name: username, text })
-        await post.save();
-        console.log("post has been saved");
-        res.sendStatus(200);
-    } catch (err) {
-        console.error(err);
-        res.sendStatus(500);
-    }
-})
+    .delete(async (req, res) => {
+        try {
+            const { post_id, author } = req.body;
+            console.log(post_id)
+            // check if jwt is valid
+            const decoded_token = jwt.verify(req.cookies.jwt_token, process.env.JWT_SECRET_KEY);
+            const jwt_user = decoded_token.username;
+            // delete only if author is the same as the username on the jwt token
+            if (jwt_user === author) {
+                await Post.deleteOne({ _id: post_id });
+                res.status(200).send("post deleted succesfully");
+            } else {
+                res.status(400).send("you are not authorized to make this request");
+            }
+        } catch (err) {
+            console.error(err);
+            res.sendStatus(500);
+        }
+    })
 
 app.post('/signup', async (req, res) => {
     try {

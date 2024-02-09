@@ -9,7 +9,6 @@ export default function PostContainer() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				// TODO: remove constant api string
 				const response = await axios.get("/post");
 				setPosts(response.data);
 			} catch (err) {

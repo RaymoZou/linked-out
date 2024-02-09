@@ -1,10 +1,15 @@
+import axios from 'axios';
+
 export default function Post(props) {
     // get post_id passed as prop so it can be deleted via http DELETE request
-    const { name, text } = props;
+    const { name, text, postId } = props;
 
     // TODO: send API request to delete post
-    function deletePost() {
-        console.log(`deleting post:`);
+    async function deletePost() {
+        // send http DELETE request with jwt
+        const data = { post_id: postId, author: name };
+        const res = axios.delete("/post", { data, withCredentials: true });
+        console.log(res.status);
     }
 
     // TODO: conditional rendering of delete button
