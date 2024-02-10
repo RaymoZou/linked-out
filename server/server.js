@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cors({
     // TODO: figure out how to allow multiple origins for the future
     // for the time being, set origin to gh-pages branch
-    origin: 'https://raymozou.github.io/linked-out',
+    origin: 'https://raymozou.github.io',
     credentials: true,
 }));
 app.use(morgan('dev'));
