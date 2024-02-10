@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function MainFeed() {
+export default function PostCreationBar() {
 
     const [postText, setPostText] = useState("");
 
@@ -22,16 +22,15 @@ export default function MainFeed() {
     }
 
     return (
-        <div className='flex m-4 gap-4 items-end bg-blue-200 p-4 justify-center' onSubmit={handleSubmit}>
-            {/* <img src={photoURL} alt="profile_pic" className="rounded" /> */}
+        <div className='flex gap-4 bg-darkgreen p-4 justify-center rounded' onSubmit={handleSubmit}>
             <form name="form" className='flex gap-4'>
                 <input onChange={onChange}
                     value={postText}
                     type="text" name="post"
                     placeholder="What's your mind?"
-                    className="border-b border-gray-500 focus:outline-none focus:border-blue-500 p-4 rounded"
+                    className="p-4 rounded shadow-none outline-none"
                 />
-                <button className="bg-purple-500 rounded p-2 text-lg font-bold text-white hover:bg-purple-600" >Post</button>
+                <button className="bg-green-700 rounded p-2 text-lg font-bold text-white hover:bg-green-800" >Post</button>
             </form>
         </div>
     )

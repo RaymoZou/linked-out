@@ -1,6 +1,6 @@
 import LoginPage from './components/LoginPage.js';
 import Navbar from './components/Navbar';
-import PostCreationBar from './components/MainFeed';
+import PostCreationBar from './components/PostCreationBar.js';
 import PostContainer from './components/PostContainer';
 import { firebaseConfig } from './firebaseConfig.js';
 import { initializeApp } from 'firebase/app';
@@ -46,7 +46,7 @@ function App() {
     }
 
     return (
-        <div className="bg-blue-100">
+        <div className="bg-lightbeige min-h-screen">
             {user && !loading ? <LoggedIn setUser={setUser} /> : <LoginPage setUser={setUser} />}
         </div>
     )
@@ -62,7 +62,7 @@ function LoggedIn({ setUser }) {
     return (
         <>
             <Navbar signOut={logout}></Navbar>
-            <div className='mx-64 bg-rose-50'>
+            <div className='flex flex-col px-16 py-8 gap-4'>
                 <PostCreationBar />
                 <PostContainer />
             </div>
