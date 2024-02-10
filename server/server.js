@@ -18,7 +18,7 @@ const morgan = require('morgan');
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: '*',
     credentials: true,
 }));
 app.use(morgan('dev'));
@@ -49,19 +49,6 @@ app.get('/protected-route', (req, res) => {
         res.status(400).send("jwt is not valid");
     }
 });
-
-// TODO: proper error handling
-// app.route('/post/:id')
-//     .get(async (req, res) => {
-//         try {
-//             const post = await Post.findById(req.params.id);
-//             res.status(200).json(post);
-//         } catch (err) {
-//             console.error(err);
-//             res.sendStatus(500);
-//         }
-//     })
-//
 
 // /post routing 
 app.route('/post')
@@ -96,7 +83,7 @@ app.route('/post')
                 await Post.deleteOne({ _id: post_id });
                 res.status(200).send("post deleted succesfully");
             } else {
-                res.status(400).send("you are not authorized to make this request");
+                res.status(401).send("you are not authorized to make this request");
             }
         } catch (err) {
             console.error(err);
