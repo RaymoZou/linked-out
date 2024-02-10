@@ -18,7 +18,9 @@ const morgan = require('morgan');
 // middleware
 app.use(express.json());
 app.use(cors({
-    origin: '*',
+    // TODO: figure out how to allow multiple origins for the future
+    // for the time being, set origin to gh-pages branch
+    origin: 'https://raymozou.github.io/linked-out',
     credentials: true,
 }));
 app.use(morgan('dev'));
