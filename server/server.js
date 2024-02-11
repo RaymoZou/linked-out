@@ -120,8 +120,9 @@ app.post('/login', async (req, res) => {
         if (user) {
             bcrypt.compare(password, user.hash, async (err, result) => {
                 if (result) {
-                    // set httpOnly to make cookie inaccessible client side
-                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true }).send('cookie set');
+                    // set httpOnly true to make cookie inaccessible via javascript client side
+                    // set sameSite to "lax" to allow for cookies to be sent to requests from another site
+                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "lax" }).send('cookie set');
                 } else {
                     res.status(401).json({ message: "user unauthorized" });
                 }
