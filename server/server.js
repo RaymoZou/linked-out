@@ -20,8 +20,8 @@ app.use(express.json());
 app.use(cors({
     // TODO: figure out how to allow multiple origins for the future
     // for the time being, set origin to gh-pages branch
-    // origin: 'https://raymozou.github.io',
-    origin: 'http://localhost:3000',
+    origin: 'https://raymozou.github.io',
+    // origin: 'http://localhost:3000',
     credentials: true,
 }));
 app.use(morgan('dev'));
