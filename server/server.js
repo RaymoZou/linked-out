@@ -20,7 +20,8 @@ app.use(express.json());
 app.use(cors({
     // TODO: figure out how to allow multiple origins for the future
     // for the time being, set origin to gh-pages branch
-    origin: 'https://raymozou.github.io',
+    // origin: 'https://raymozou.github.io',
+    origin: 'http://localhost:3000',
     credentials: true,
 }));
 app.use(morgan('dev'));
@@ -94,6 +95,7 @@ app.route('/post')
         }
     })
 
+// TODO: refactor? this route is pretty much the same as /login
 app.post('/signup', async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -102,7 +104,7 @@ app.post('/signup', async (req, res) => {
             try {
                 const user = new User({ username, hash });
                 await user.save();
-                res.sendStatus(200);
+                res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "none", secure: true }).send('cookie set');
             } catch (err) {
                 res.status(500).send("error creating the user");
                 console.error();
