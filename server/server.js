@@ -20,7 +20,8 @@ app.use(express.json());
 app.use(cors({
     // TODO: figure out how to allow multiple origins for the future
     // for the time being, set origin to gh-pages branch
-    origin: 'https://raymozou.github.io',
+    // origin: 'https://raymozou.github.io',
+    origin: 'http://localhost:3000',
     credentials: true,
 }));
 app.use(morgan('dev'));
@@ -122,7 +123,7 @@ app.post('/login', async (req, res) => {
                 if (result) {
                     // set httpOnly true to make cookie inaccessible via javascript client side
                     // set sameSite to "lax" to allow for cookies to be sent to requests from another site
-                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "lax", secure: true }).send('cookie set');
+                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "none", secure: true }).send('cookie set');
                 } else {
                     res.status(401).json({ message: "user unauthorized" });
                 }
