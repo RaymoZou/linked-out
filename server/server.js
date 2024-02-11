@@ -122,7 +122,7 @@ app.post('/login', async (req, res) => {
                 if (result) {
                     // set httpOnly true to make cookie inaccessible via javascript client side
                     // set sameSite to "lax" to allow for cookies to be sent to requests from another site
-                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "lax" }).send('cookie set');
+                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "lax", secure: true }).send('cookie set');
                 } else {
                     res.status(401).json({ message: "user unauthorized" });
                 }
