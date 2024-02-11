@@ -9,7 +9,10 @@ import { useEffect, createContext, useState } from "react";
 import axios from 'axios';
 
 // configure base url for axios
-axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
+// manually set to gh-pages homepage on deployment
+// TODO: find a way to automate the above
+// axios.defaults.baseURL = 'http://localhost:3000'; // for development
+axios.defaults.baseURL = 'https://linked-out.onrender.com/'; // for development
 
 const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);
