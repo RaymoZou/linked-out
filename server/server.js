@@ -142,7 +142,7 @@ app.get('/logout', (req, res) => {
     try {
         // TODO: should jwt_token be a constant string?
         console.log(req.cookies);
-        res.clearCookie('jwt_token', { httpOnly: true }).sendStatus(200);
+        res.clearCookie('jwt_token', { httpOnly: true, sameSite: "none", secure: true }).sendStatus(200);
     } catch (err) {
         res.statusStatus(500);
     }
