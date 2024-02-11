@@ -40,6 +40,7 @@ app.get('/', (req, res) => {
     res.status(200).send("hello world");
 });
 
+// TODO: this should be a middleware, not an endpoint
 app.get('/protected-route', (req, res) => {
     // check if jwt
     try {
@@ -122,7 +123,7 @@ app.post('/login', async (req, res) => {
                 if (result) {
                     // set httpOnly true to make cookie inaccessible via javascript client side
                     // set sameSite to "lax" to allow for cookies to be sent to requests from another site
-                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "lax" }).send('cookie set');
+                    res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "none", secure: true }).send('cookie set');
                 } else {
                     res.status(401).json({ message: "user unauthorized" });
                 }
@@ -140,8 +141,7 @@ app.post('/login', async (req, res) => {
 app.get('/logout', (req, res) => {
     try {
         // TODO: should jwt_token be a constant string?
-        console.log(req.cookies);
-        res.clearCookie('jwt_token', { httpOnly: true }).sendStatus(200);
+        res.clearCookie('jwt_token', { httpOnly: true, sameSite: "none", secure: true }).sendStatus(200);
     } catch (err) {
         res.statusStatus(500);
     }
