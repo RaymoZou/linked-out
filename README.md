@@ -4,6 +4,7 @@ A replication of the popular LinkedIn social media website created using React t
 ## Core Features
 - Login and logout through JSON Web Token validation
 - Read and write posts through http GET and POST requests to the backend
+- Delete posts if the post belongs to the user
 
 ## Client Setup
 1. Navigate to the `client` directory
@@ -18,14 +19,16 @@ REACT_APP_SERVER_URL={server_url}
 1. Navigate to the `server` directory
 2. Create a `.env.` file with the following fields
 ```
-MONGODB_URI={MONGODB_URI}
-PORT={PORT}
-JWT_SECRET_KEY={JWT_KEY}
+MONGODB_URI={MONGODB_URI} // connection string for connecting to MongoDB cloud instance
+DB_NAME={DB_NAME}         // name of your MongoDB subdirectory
+PORT={PORT}               // port server is hosted at
+JWT_SECRET_KEY={JWT_KEY}  // JSON Web Token key used for verifying user requests
+ALLOWED_ORIGIN            // only requests from this origin are allowed
 ```
 3. `npm install` to install dependencies
 4. `node server.js` to run the server
 
 ## What's Next?
-- Replace Firebase hosting and database with GitHub Pages and MongoDB
-- Replace plain CSS files with Tailwind CSS
+- Edit existing posts
 - Move rendering to server side with Next.js?
+- Move server endpoints to `/api` route and serve static client files from `/`
