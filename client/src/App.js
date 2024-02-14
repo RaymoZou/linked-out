@@ -2,20 +2,15 @@ import LoginPage from './components/LoginPage.js';
 import Navbar from './components/Navbar';
 import PostCreationBar from './components/PostCreationBar.js';
 import PostContainer from './components/PostContainer';
-import { firebaseConfig } from './firebaseConfig.js';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
 import { useEffect, createContext, useState } from "react";
 import axios from 'axios';
 
 // configure base url for axios
 // manually set to gh-pages homepage on deployment
 // TODO: find a way to automate the above
-// axios.defaults.baseURL = 'http://localhost:3000'; // for development
-axios.defaults.baseURL = 'https://linked-out.onrender.com/'; // for development
+// axios.defaults.baseurl = 'http://localhost:3001'; // uncomment for development
+axios.defaults.baseurl = 'https://linked-out.onrender.com/'; // uncomment for development
 
-const firebaseApp = initializeApp(firebaseConfig);
-export const auth = getAuth(firebaseApp);
 export const UserContext = createContext(null);
 
 // TODO: fix the inconsistent rendering (has something to do with when setUser and setLoginStatus)
