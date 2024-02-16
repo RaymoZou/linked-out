@@ -8,12 +8,11 @@ import axios from 'axios';
 // configure base url for axios
 // manually set to gh-pages homepage on deployment
 // TODO: find a way to automate the above
-// axios.defaults.baseurl = 'http://localhost:3001'; // uncomment for development
-axios.defaults.baseurl = 'https://linked-out.onrender.com/'; // uncomment for development
+// axios.defaults.baseURL = 'http://localhost:3001'; // uncomment for development
+axios.defaults.baseURL = 'https://linked-out.onrender.com/'; // uncomment for development
 
 export const UserContext = createContext(null);
 
-// TODO: fix the inconsistent rendering (has something to do with when setUser and setLoginStatus)
 function App() {
 
     // user object contains the following fields:
@@ -39,7 +38,6 @@ function App() {
     }, [])
 
     if (loading) {
-        // return <div>loading...</div>
         return null;
     }
 
