@@ -6,7 +6,6 @@ export default function LoginPage({ setUser }) {
     // login screen by default
     const [isLoggingIn, setIsLoggingIn] = useState(true);
 
-    // TODO: form sanitation (no empty fields, etc.)
     async function login(e) {
         e.preventDefault();
         const username = e.target.username.value
@@ -27,8 +26,8 @@ export default function LoginPage({ setUser }) {
         <div className='flex justify-center items-center flex-col h-screen gap-5'>
             <div> {isLoggingIn ? "Log in" : "Sign up"} </div>
             <form onSubmit={isLoggingIn ? login : signup} className="flex flex-col gap-2">
-                <input id="username" type="text" placeholder="username" className="p-2 rounded outline-none" autoComplete="on" />
-                <input id="password" type="password" placeholder="password" className="p-2 rounded outline-none" autoComplete="on" />
+                <input id="username" type="text" placeholder="username" className="p-2 rounded outline-none" autoComplete="on" required/>
+                <input id="password" type="password" placeholder="password" className="p-2 rounded outline-none" autoComplete="on" required/>
                 <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' >{isLoggingIn ? "Login" : "Sign Up"}</button>
             </form>
             <button onClick={() => setIsLoggingIn(!isLoggingIn)}>{isLoggingIn
