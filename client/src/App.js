@@ -8,8 +8,8 @@ import axios from 'axios';
 // configure base url for axios
 // manually set to gh-pages homepage on deployment
 // TODO: find a way to automate the above
-axios.defaults.baseURL = 'http://localhost:3001'; // uncomment for development
-// axios.defaults.baseURL = 'https://linked-out.onrender.com/'; // uncomment for development
+// axios.defaults.baseURL = 'http://localhost:3001'; // uncomment for development
+axios.defaults.baseURL = 'https://linked-out.onrender.com/'; // uncomment for development
 
 export const UserContext = createContext(null);
 
@@ -37,32 +37,28 @@ function App() {
         validateJWT();
     }, [])
 
+    async function logout() {
+        const res = await axios.get('/logout', { withCredentials: true });
+        if (res.status === 200) setUser(null);
+    };
+
     if (loading) {
         return null;
     }
 
     return (
         <div className="bg-lightbeige min-h-screen">
-            {user && !loading ? <LoggedIn setUser={setUser} /> : <LoginPage setUser={setUser} />}
+            {user ?
+                <UserContext.Provider value={user}>
+                    <Navbar signOut={logout}></Navbar>
+                    <div className='flex flex-col px-16 py-8 gap-4'>
+                        <PostCreationBar />
+                        <PostContainer />
+                    </div>
+                </UserContext.Provider>
+                :
+                <LoginPage setUser={setUser} />}
         </div>
-    )
-}
-
-function LoggedIn({ setUser }) {
-
-    async function logout() {
-        const res = await axios.get('/logout', { withCredentials: true });
-        if (res.status === 200) setUser(null);
-    };
-
-    return (
-        <>
-            <Navbar signOut={logout}></Navbar>
-            <div className='flex flex-col px-16 py-8 gap-4'>
-                <PostCreationBar />
-                <PostContainer />
-            </div>
-        </>
     )
 }
 
