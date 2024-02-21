@@ -10,6 +10,7 @@ export default function PostCreationBar() {
     }
 
     // make api request here
+    // TODO: refresh post feed after submit (optimistic UI)
     function handleSubmit(e) {
         e.preventDefault();
         try {
@@ -29,6 +30,7 @@ export default function PostCreationBar() {
                     type="text" name="post"
                     placeholder="What's your mind?"
                     className="p-4 rounded shadow-none outline-none"
+                    required
                 />
                 <button className="bg-green-700 rounded p-2 text-lg font-bold text-white hover:bg-green-800" >Post</button>
             </form>
