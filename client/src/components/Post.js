@@ -1,10 +1,19 @@
 import axios from 'axios';
 import { useContext } from 'react';
 import { UserContext } from "../App";
+import { fromUnixTime, format } from 'date-fns'
+import { formatDistance } from 'date-fns/formatDistance';
 
 export default function Post(props) {
     const { name, text, postId } = props;
     const userContext = useContext(UserContext);
+
+    // extracts the unix date from postId and parses into a human readable format
+    function getDate(postId) {
+        const unix_time = parseInt(postId.substring(0, 8), 16);
+        const date = fromUnixTime(unix_time);
+        return format(date, 'dd/MM/yyyy hh:mm:ss a') + ` (${formatDistance(date, new Date(), { addSuffix: true })})`;
+    };
 
     async function deletePost() {
         try {
@@ -19,8 +28,9 @@ export default function Post(props) {
     // TODO: responsiveness at multiple screen resolutions
     return (
         <div className="flex flex-col items-start bg-lightgreen gap-2 p-4 rounded">
-            <div className="bg-yellow">{name}</div>
+            <div className="bg-yellow font-bold text-lg">{name}</div>
             <div className="break-all">{text}</div>
+            <div className="break-all text-gray-800 italic">{getDate(postId)}</div>
             {name === userContext.username ? <button onClick={deletePost} className="bg-red-500 hover:bg-red-600 rounded p-2 text-lg font-bold text-white self-end" >Delete</button> : null}
         </div>
     );
