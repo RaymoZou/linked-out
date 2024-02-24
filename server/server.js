@@ -53,7 +53,7 @@ app.get('/protected-route', (req, res) => {
     }
 });
 
-// /post routing 
+// post routing 
 app.route('/post')
     .get(async (req, res) => {
         const allPosts = await Post.find();
