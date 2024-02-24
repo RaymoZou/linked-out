@@ -6,6 +6,13 @@ A replication of the popular LinkedIn social media website created using React t
 - Read and write posts through http GET and POST requests to the backend
 - Delete posts if the post belongs to the user
 
+## Post Structure
+| Name        | Data Type   | Description |
+| ----------- | ----------- | ----------- |
+| `id`        | ObjectId    | [MongoDB data type](https://www.mongodb.com/docs/manual/reference/method/ObjectId/) |
+| `name`   | String        | Username of the poster |
+| `text`   | String        | Post text |
+
 ## Client Setup
 1. Navigate to the `client` directory
 2. Create a `.env` file with the following fields
