@@ -9,7 +9,7 @@ import axios from 'axios';
 // manually set to gh-pages homepage on deployment
 // TODO: find a way to automate the above
 // axios.defaults.baseURL = 'http://localhost:3001'; // uncomment for development
-axios.defaults.baseURL = 'https://linked-out.onrender.com/'; // uncomment for development
+axios.defaults.baseURL = 'https://linked-out.onrender.com/'; // uncomment for deployment
 
 export const UserContext = createContext(null);
 
@@ -47,7 +47,7 @@ function App() {
     }
 
     return (
-        <div className="bg-lightbeige min-h-screen">
+        <div className="bg-indigo-100 min-h-screen">
             {user ?
                 <UserContext.Provider value={user}>
                     <Navbar signOut={logout}></Navbar>

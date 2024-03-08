@@ -20,10 +20,10 @@ export default function PostCreationBar() {
         } catch (err) {
             console.error(err)
         }
-    }
+    };
 
     return (
-        <div className='flex gap-4 bg-darkgreen p-4 justify-center rounded' onSubmit={handleSubmit}>
+        <div className='flex gap-4 bg-indigo-200 p-4 justify-center rounded' onSubmit={handleSubmit}>
             <form name="form" className='flex gap-4'>
                 <input onChange={onChange}
                     value={postText}
@@ -32,7 +32,7 @@ export default function PostCreationBar() {
                     className="p-4 rounded shadow-none outline-none"
                     required
                 />
-                <button className="bg-green-700 rounded p-2 text-lg font-bold text-white hover:bg-green-800" >Post</button>
+                <button className="bg-indigo-400 rounded p-2 text-lg font-bold text-white hover:bg-indigo-500" >Post</button>
             </form>
         </div>
     )
