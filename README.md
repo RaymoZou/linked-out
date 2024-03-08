@@ -1,9 +1,9 @@
 # LinkedOut
-A replication of the popular LinkedIn social media website created using React to render the front-end view and a Express server connected to a MongoDB instance to handle read/writes to the database.
+A bare-bones social media website created using React to render the front-end view and an Express server connected to a MongoDB instance to handle read/writes to the database.
 
 ## Core Features
 - Login and logout through JSON Web Token validation
-- Read and write posts through http GET and POST requests to the backend
+- Read and write posts through HTTP GET and POST requests to the backend
 - Delete posts if the post belongs to the user
 
 ## Post Structure
