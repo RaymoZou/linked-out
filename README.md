@@ -35,6 +35,16 @@ ALLOWED_ORIGIN            // only requests from this origin are allowed
 3. `npm install` to install dependencies
 4. `node server.js` to run the server
 
+## Live Preview
+Check it out live [here!](https://raymozou.github.io/linked-out/)
+- Please be patient as the app is currently being hosted on Render's free tier plan which has an abormally long wind up time. Thanks!
+
+## Preview
+### Login/Signup Page
+![sign up page](./demo2.png)
+### Homepage
+![homepage](./demo1.png)
+
 ## What's Next?
 - Edit existing posts
 - Move rendering to server side with Next.js?
