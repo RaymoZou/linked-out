@@ -31,7 +31,7 @@ export default function Post(props) {
             <div className="font-bold text-lg">{name}</div>
             <div className="break-all">{text}</div>
             <div className="break-all text-gray-800 italic">{getDate(postId)}</div>
-            {name === userContext.username ? <button onClick={deletePost} className="bg-red-500 hover:bg-red-600 rounded p-2 text-lg font-bold text-white self-end" >Delete</button> : null}
+            {name === userContext.username ? <button onClick={deletePost} className="transition bg-red-500 hover:bg-red-600 rounded p-2 text-lg font-bold text-white self-end" >Delete</button> : null}
         </div>
     );
 }

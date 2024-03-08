@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+// import Button from './Button';
 
 export default function PostCreationBar() {
 
@@ -32,7 +33,7 @@ export default function PostCreationBar() {
                     className="p-4 rounded shadow-none outline-none"
                     required
                 />
-                <button className="bg-indigo-400 rounded p-2 text-lg font-bold text-white hover:bg-indigo-500" >Post</button>
+                <button className="transition bg-violet-500 hover:bg-violet-600 text-lg text-white font-bold p-2 rounded">Post</button>
             </form>
         </div>
     )

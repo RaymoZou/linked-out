@@ -5,6 +5,7 @@
   "homepage": "https://raymozou.github.io/linked-out",
   "dependencies": {
     "axios": "^1.6.5",
+    "date-fns": "^3.3.1",
     "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -39,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^6.0.0",
     "tailwindcss": "^3.3.5"
   }

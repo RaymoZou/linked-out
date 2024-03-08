@@ -1,6 +1,6 @@
-import LoginPage from './components/LoginPage.js';
+import LoginPage from './components/LoginPage';
 import Navbar from './components/Navbar';
-import PostCreationBar from './components/PostCreationBar.js';
+import PostCreationBar from './components/PostCreationBar';
 import PostContainer from './components/PostContainer';
 import { useEffect, createContext, useState } from "react";
 import axios from 'axios';
@@ -38,6 +38,7 @@ function App() {
     }, [])
 
     async function logout() {
+        console.log("logging out");
         const res = await axios.get('/logout', { withCredentials: true });
         if (res.status === 200) setUser(null);
     };
