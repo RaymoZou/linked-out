@@ -4,6 +4,7 @@ import PostCreationBar from './components/PostCreationBar';
 import PostContainer from './components/PostContainer';
 import { useEffect, createContext, useState } from "react";
 import axios from 'axios';
+import Footer from './components/Footer';
 
 // configure base url for axios
 // manually set to gh-pages homepage on deployment
@@ -48,18 +49,21 @@ function App() {
     }
 
     return (
-        <div className="bg-indigo-100 min-h-screen">
-            {user ?
-                <UserContext.Provider value={user}>
-                    <Navbar signOut={logout}></Navbar>
-                    <div className='flex flex-col px-16 py-8 gap-4'>
-                        <PostCreationBar />
-                        <PostContainer />
-                    </div>
-                </UserContext.Provider>
-                :
-                <LoginPage setUser={setUser} />}
-        </div>
+        <>
+            <div className="bg-indigo-100 ">
+                {user ?
+                    <UserContext.Provider value={user}>
+                        <Navbar signOut={logout}></Navbar>
+                        <div className='flex flex-col px-16 py-8 gap-4'>
+                            <PostCreationBar />
+                            <PostContainer />
+                        </div>
+                    </UserContext.Provider>
+                    :
+                    <LoginPage setUser={setUser} />}
+            </div>
+            <Footer />
+        </>
     )
 }
 
