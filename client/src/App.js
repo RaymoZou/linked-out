@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 // manually set to gh-pages homepage on deployment
 // TODO: find a way to automate the above
 // axios.defaults.baseURL = 'http://localhost:3001'; // uncomment for development
-axios.defaults.baseURL = 'https://linked-out.onrender.com/'; // uncomment for deployment
+axios.defaults.baseURL = 'https://linked-out-production.up.railway.app/'; // uncomment for deployment
 
 export const UserContext = createContext(null);
 
