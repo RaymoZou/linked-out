@@ -29,7 +29,7 @@ export default function PostCreationBar() {
                 <input onChange={onChange}
                     value={postText}
                     type="text" name="post"
-                    placeholder="What's your mind?"
+                    placeholder="What's on your mind?"
                     className="p-4 rounded shadow-none outline-none"
                     required
                 />
