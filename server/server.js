@@ -56,7 +56,7 @@ app.get('/protected-route', (req, res) => {
 // post routing 
 app.route('/post')
     .get(async (req, res) => {
-        const allPosts = await Post.find();
+        const allPosts = await Post.find().sort({ _id: -1 });
         res.status(200).json(allPosts);
     })
     .post(async (req, res) => {
