@@ -50,18 +50,16 @@ function App() {
 
     return (
         <>
-            <div className="bg-indigo-100 ">
-                {user ?
-                    <UserContext.Provider value={user}>
-                        <Navbar signOut={logout}></Navbar>
-                        <div className='flex flex-col px-16 py-8 gap-4'>
-                            <PostCreationBar />
-                            <PostContainer />
-                        </div>
-                    </UserContext.Provider>
-                    :
-                    <LoginPage setUser={setUser} />}
-            </div>
+            {user ?
+                <UserContext.Provider value={user}>
+                    <Navbar signOut={logout}></Navbar>
+                    <div className='flex flex-col px-16 py-8 gap-4'>
+                        <PostCreationBar />
+                        <PostContainer />
+                    </div>
+                </UserContext.Provider>
+                :
+                <LoginPage setUser={setUser} />}
             <Footer />
         </>
     )

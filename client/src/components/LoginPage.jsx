@@ -24,7 +24,7 @@ export default function LoginPage({ setUser }) {
     }
 
     return (
-        <div className='flex justify-center items-center flex-col h-screen gap-5'>
+        <div className={`flex justify-center items-center flex-col h-screen gap-5 ${isLogin ? 'bg-blue-100' : 'bg-indigo-100'}`}>
             <div className="text-xl font-bold"> LinkedOut </div>
             <form onSubmit={isLogin ? login : signup} className="flex flex-col gap-2">
                 <input id="username" type="text" placeholder="username" className="p-2 rounded outline-none" autoComplete="on" required />
