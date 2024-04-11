@@ -53,7 +53,7 @@ function App() {
             {user ?
                 <UserContext.Provider value={user}>
                     <Navbar signOut={logout}></Navbar>
-                    <div className='flex flex-col px-16 py-8 gap-4 bg-blue-100'>
+                    <div className='flex flex-col px-16 py-8 gap-4 bg-blue-100 md:mx-72'>
                         <PostCreationBar />
                         <PostContainer />
                     </div>
