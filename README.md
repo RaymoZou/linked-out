@@ -46,6 +46,7 @@ Check it out live [here!](https://raymozou.github.io/linked-out/)
 ![homepage](./demo1.png)
 
 ## What's Next?
+- Sort posts by name, date & more
 - Edit existing posts
 - Move rendering to server side with Next.js?
 - Move server endpoints to `/api` route and serve static client files from `/`
