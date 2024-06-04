@@ -8,19 +8,21 @@ export default function PostCreationBar() {
 
     function onChange(e) {
         setPostText(e.target.value);
-    }
+    };
 
     // make api request here
     // TODO: refresh post feed after submit (optimistic UI)
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         try {
             const data = { text: postText };
-            axios.post("/post", data, { withCredentials: true });
-            setPostText('');
+            const res = await axios.post("/post", data, { withCredentials: true });
+            if (res.status === 200) {
+                console.log("successfully posted");
+            };
         } catch (err) {
             console.error(err)
-        }
+        };
     };
 
     return (
