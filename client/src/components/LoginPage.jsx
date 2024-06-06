@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import Button from "./Button";
 
 export default function LoginPage({ setUser }) {
 

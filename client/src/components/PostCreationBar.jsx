@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import axios from 'axios';
-// import Button from './Button';
+import { UserContext } from "../App";
+
 
 export default function PostCreationBar() {
 
     const [postText, setPostText] = useState("");
+    const { fetchData } = useContext(UserContext);
 
     function onChange(e) {
         setPostText(e.target.value);
@@ -18,7 +20,8 @@ export default function PostCreationBar() {
             const data = { text: postText };
             const res = await axios.post("/post", data, { withCredentials: true });
             if (res.status === 200) {
-                console.log("successfully posted");
+                setPostText("");
+                fetchData();
             };
         } catch (err) {
             console.error(err)

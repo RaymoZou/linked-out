@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { UserContext } from "../App";
-// import Button from "./Button";
 
 export default function Navbar(props) {
 
-    const user = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     return (
         <div className="flex justify-center md:justify-end items-center gap-4 bg-slate-500 p-5">

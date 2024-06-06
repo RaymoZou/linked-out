@@ -21,6 +21,7 @@ function App() {
     // username: unique identifier string for the user
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [posts, setPosts] = useState(null);
 
     useEffect(() => {
         document.title = "LinkedOut";
@@ -39,6 +40,15 @@ function App() {
         validateJWT();
     }, [])
 
+    async function fetchData() {
+        try {
+            const response = await axios.get("/post");
+            setPosts(response.data);
+        } catch (err) {
+            console.error(err);
+        };
+    };
+
     async function logout() {
         console.log("logging out");
         const res = await axios.get('/logout', { withCredentials: true });
@@ -47,12 +57,12 @@ function App() {
 
     if (loading) {
         return null;
-    }
+    };
 
     return (
         <>
             {user ?
-                <UserContext.Provider value={user}>
+                <UserContext.Provider value={{ user, posts, fetchData }}>
                     <Navbar signOut={logout}></Navbar>
                     <div className='flex flex-col px-16 py-8 gap-4 bg-blue-100 md:px-72'>
                         <PostCreationBar />
