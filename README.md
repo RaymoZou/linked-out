@@ -15,11 +15,7 @@ A bare-bones social media website created using React to render the front-end vi
 
 ## Client Setup
 1. Navigate to the `client` directory
-2. Create a `.env` file with the following fields
-```
-REACT_APP_SERVER_URL={server_url}
-```
-3. `npm install` to install dependencies
+2. `npm install` to install dependencies
 4. `npm run start` to start the React app
 
 ## Server setup
