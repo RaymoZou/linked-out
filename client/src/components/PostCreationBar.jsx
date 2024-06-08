@@ -13,7 +13,6 @@ export default function PostCreationBar() {
     };
 
     // make api request here
-    // TODO: refresh post feed after submit (optimistic UI)
     async function handleSubmit(e) {
         e.preventDefault();
         try {

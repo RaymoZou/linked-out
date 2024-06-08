@@ -23,9 +23,9 @@ export default function Post(props) {
                 fetchData();
             };
         } catch (error) {
-            console.log(error.response.status);
-        }
-    }
+            console.error(error.response.status);
+        };
+    };
 
     return (
         <div className="flex flex-col items-start bg-indigo-200 gap-2 p-4 rounded">

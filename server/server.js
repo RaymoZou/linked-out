@@ -30,7 +30,6 @@ function generateJWT(payload) {
         // TODO: change expiration date
         expiresIn: "30 days"
     });
-    console.log(token);
     return token;
 }
 
@@ -67,7 +66,6 @@ app.route('/post')
             const { text } = req.body;
             const post = new Post({ name: username, text })
             await post.save();
-            console.log("post has been saved");
             res.sendStatus(200);
         } catch (err) {
             console.error(err);

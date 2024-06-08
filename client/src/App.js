@@ -50,7 +50,6 @@ function App() {
     };
 
     async function logout() {
-        console.log("logging out");
         const res = await axios.get('/logout', { withCredentials: true });
         if (res.status === 200) setUser(null);
     };
