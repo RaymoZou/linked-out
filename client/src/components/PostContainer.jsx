@@ -7,12 +7,20 @@ export const PostsContext = createContext(null);
 
 export default function PostContainer() {
 
-    const { posts, fetchData } = useContext(UserContext);
+    const { posts, setPosts } = useContext(UserContext);
 
     // fetch posts on initial mount
     useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get("/post");
+                setPosts(response.data);
+            } catch (err) {
+                console.error(err);
+            };
+        };
         fetchData();
-    }, [])
+    }, [setPosts])
 
     return (
         <div className='flex flex-col gap-4'>

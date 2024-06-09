@@ -40,15 +40,6 @@ function App() {
         validateJWT();
     }, [])
 
-    async function fetchData() {
-        try {
-            const response = await axios.get("/post");
-            setPosts(response.data);
-        } catch (err) {
-            console.error(err);
-        };
-    };
-
     async function logout() {
         const res = await axios.get('/logout', { withCredentials: true });
         if (res.status === 200) setUser(null);
@@ -61,7 +52,7 @@ function App() {
     return (
         <>
             {user ?
-                <UserContext.Provider value={{ user, posts, fetchData }}>
+                <UserContext.Provider value={{ user, posts, setPosts }}>
                     <Navbar signOut={logout}></Navbar>
                     <div className='flex flex-col px-16 py-8 gap-4 bg-blue-100 md:px-72'>
                         <PostCreationBar />

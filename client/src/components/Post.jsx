@@ -6,13 +6,22 @@ import { formatDistance } from 'date-fns/formatDistance';
 
 export default function Post(props) {
     const { name, text, postId } = props;
-    const { user, fetchData } = useContext(UserContext);
+    const { user, setPosts } = useContext(UserContext);
 
     // parses the date from objectId string into the following format: dd/mm/yyyy hh:mm:ss
     function getDate(postId) {
         const unix_time = parseInt(postId.substring(0, 8), 16);
         const date = fromUnixTime(unix_time);
         return format(date, 'dd/MM/yyyy hh:mm:ss a') + ` (${formatDistance(date, new Date(), { addSuffix: true })})`;
+    };
+
+    async function fetchData() {
+        try {
+            const response = await axios.get("/post");
+            setPosts(response.data);
+        } catch (err) {
+            console.error(err);
+        };
     };
 
     async function deletePost() {

@@ -6,10 +6,21 @@ import { UserContext } from "../App";
 export default function PostCreationBar() {
 
     const [postText, setPostText] = useState("");
-    const { fetchData } = useContext(UserContext);
+    const { setPosts } = useContext(UserContext);
 
     function onChange(e) {
         setPostText(e.target.value);
+    };
+
+    // TODO: maybe just update posts on client side?
+    // TODO: fetchData is copy and pasted
+    async function fetchData() {
+        try {
+            const response = await axios.get("/post");
+            setPosts(response.data);
+        } catch (err) {
+            console.error(err);
+        };
     };
 
     // make api request here
