@@ -1,22 +1,24 @@
-require('dotenv').config();
-require('./database');
-const Post = require('./posts');
-const User = require('./users');
-// node packages
-const cors = require('cors');
-const express = require('express');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
+import 'dotenv/config.js';
+import './database.js';
+import Post from './posts.js';
+import User from './users.js';
+import cors from 'cors';
+import express, { json } from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
 const app = express();
-const morgan = require('morgan');
+import morgan from 'morgan';
+
+const { sign, verify } = jwt;
+const { hash, compare } = bcrypt;
 
 // TODO:
 // create protected routes with valid JWTs (such as Login Page, POST requests for creating posts)
 // and general routes (such as the POST login requests)
 
 // middleware
-app.use(express.json());
+app.use(json());
 app.use(cors({
     // TODO: figure out how to allow multiple origins for the future
     // for the time being, set origin to gh-pages branch
@@ -26,12 +28,12 @@ app.use(cors({
 app.use(morgan('dev'));
 
 function generateJWT(payload) {
-    const token = jwt.sign(payload, process.env.JWT_SECRET_KEY, {
+    const token = sign(payload, process.env.JWT_SECRET_KEY, {
         // TODO: change expiration date
         expiresIn: "30 days"
     });
     return token;
-}
+};
 
 app.use(cookieParser());
 
@@ -39,12 +41,16 @@ app.get('/', (req, res) => {
     res.status(200).send("hello world");
 });
 
+// app.use((req, res, next) => {
+//     console.log("middleware passed");
+//     next();
+// });
+
 // TODO: this should be a middleware, not an endpoint
 app.get('/protected-route', (req, res) => {
-    // check if jwt
     try {
         const token = req.cookies.jwt_token;
-        const decoded_token = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const decoded_token = verify(token, process.env.JWT_SECRET_KEY);
         res.status(200).send(decoded_token);
     } catch (error) {
         console.error("jwt is not valid");
@@ -61,7 +67,7 @@ app.route('/post')
     .post(async (req, res) => {
         try {
             // get username from jwt payload (if valid)
-            const decoded_token = jwt.verify(req.cookies.jwt_token, process.env.JWT_SECRET_KEY);
+            const decoded_token = verify(req.cookies.jwt_token, process.env.JWT_SECRET_KEY);
             const username = decoded_token.username;
             const { text } = req.body;
             const post = new Post({ name: username, text })
@@ -77,7 +83,7 @@ app.route('/post')
             const { post_id, author } = req.body;
             console.log(post_id)
             // check if jwt is valid
-            const decoded_token = jwt.verify(req.cookies.jwt_token, process.env.JWT_SECRET_KEY);
+            const decoded_token = verify(req.cookies.jwt_token, process.env.JWT_SECRET_KEY);
             const jwt_user = decoded_token.username;
             // delete only if author is the same as the username on the jwt token
             if (jwt_user === author) {
@@ -96,7 +102,7 @@ app.route('/post')
 app.post('/signup', async (req, res) => {
     try {
         const { username, password } = req.body;
-        bcrypt.hash(password, 10, async (err, hash) => {
+        hash(password, 10, async (err, hash) => {
             if (err) throw err;
             try {
                 const user = new User({ username, hash });
@@ -118,7 +124,7 @@ app.post('/login', async (req, res) => {
         const { username, password } = req.body;
         const user = await User.findOne({ username });
         if (user) {
-            bcrypt.compare(password, user.hash, async (err, result) => {
+            compare(password, user.hash, async (err, result) => {
                 if (result) {
                     // set httpOnly true to make cookie inaccessible via javascript client side
                     // set sameSite to "lax" to allow for cookies to be sent to requests from another site

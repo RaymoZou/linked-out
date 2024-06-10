@@ -26,5 +26,6 @@
     "@types/express": "^4.17.21",
     "axios": "^1.6.7",
     "jest": "^29.7.0"
-  }
+  },
+  "type": "module" 
 }
