@@ -30,7 +30,7 @@ app.use(morgan('dev'));
 function generateJWT(payload) {
     const token = sign(payload, process.env.JWT_SECRET_KEY, {
         // TODO: change expiration date
-        expiresIn: "30 days"
+        expiresIn: "14 days"
     });
     return token;
 };
