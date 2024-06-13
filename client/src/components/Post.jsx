@@ -36,12 +36,25 @@ export default function Post(props) {
         };
     };
 
+    // TODO: implement
+    async function editPost() {
+        try {
+            console.log(`editing post with id: ${postId}`);
+        } catch (error) {
+            console.error(error.response.status);
+        };
+    };
+
+    // TODO: fix css of edit & delete buttons
     return (
         <div className="flex flex-col items-start bg-indigo-200 gap-2 p-4 rounded">
             <div className="font-bold text-lg">{name}</div>
             <div className="break-all">{text}</div>
             <div className="break-all text-gray-800 italic">{getDate(postId)}</div>
-            {name === user.username ? <button onClick={deletePost} className="transition bg-red-500 hover:bg-red-600 rounded p-2 text-lg font-bold text-white self-end" >Delete</button> : null}
+            <div>
+                {name === user.username ? <button onClick={deletePost} className="transition bg-red-500 hover:bg-red-600 rounded p-2 text-lg font-bold text-white self-end" >Delete</button> : null}
+                {name === user.username ? <button onClick={editPost} className="transition bg-yellow-500 hover:bg-yellow-600 rounded p-2 text-lg font-bold text-white self-end" >Edit</button> : null}
+            </div>
         </div>
     );
 }
