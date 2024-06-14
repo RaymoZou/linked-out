@@ -45,15 +45,14 @@ export default function Post(props) {
         };
     };
 
-    // TODO: fix css of edit & delete buttons
     return (
         <div className="flex flex-col items-start bg-indigo-200 gap-2 p-4 rounded">
             <div className="font-bold text-lg">{name}</div>
             <div className="break-all">{text}</div>
             <div className="break-all text-gray-800 italic">{getDate(postId)}</div>
-            <div>
+            <div className="flex self-end gap-4">
+                {name === user.username ? <button onClick={editPost} className="transition bg-emerald-500 hover:bg-emerald-600 rounded p-2 text-lg font-bold text-white self-end" >Edit</button> : null}
                 {name === user.username ? <button onClick={deletePost} className="transition bg-red-500 hover:bg-red-600 rounded p-2 text-lg font-bold text-white self-end" >Delete</button> : null}
-                {name === user.username ? <button onClick={editPost} className="transition bg-yellow-500 hover:bg-yellow-600 rounded p-2 text-lg font-bold text-white self-end" >Edit</button> : null}
             </div>
         </div>
     );
