@@ -13,6 +13,12 @@ A bare-bones social media website created using React to render the front-end vi
 | `name`   | String        | Username of the poster |
 | `text`   | String        | Post text |
 
+## User Structure
+| Name        | Data Type   | Description |
+| ----------- | ----------- | ----------- |
+| `username`  | String      |             |
+| `hash`      | String      | password encrypted with bcrypt |
+
 ## Client Setup
 1. Navigate to the `client` directory
 2. `npm install` to install dependencies
@@ -33,7 +39,7 @@ ALLOWED_ORIGIN            // only requests from this origin are allowed
 
 ## Live Preview
 Check it out live [here!](https://raymozou.github.io/linked-out/)
-- Please be patient as the app is currently being hosted on Render's free tier plan which has an abormally long wind up time. Thanks!
+- Please be patient as the app is currently hosted on Render's free tier plan which has an abnormally long wind up time. Thanks!
 
 ## Preview
 ### Login/Signup Page
