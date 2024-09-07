@@ -3,6 +3,7 @@ A bare-bones social media website created using React to render the front-end vi
 
 ## Core Features
 - Login and logout through JSON Web Token validation
+- Encrypted password hashes stored on NoSQL database
 - Read and write posts through HTTP GET and POST requests to the backend
 - Delete posts if the post belongs to the user
 
