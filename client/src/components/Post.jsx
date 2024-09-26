@@ -51,7 +51,7 @@ export default function Post(props) {
             <div className="break-all">{text}</div>
             <div className="break-all text-gray-800 italic">{getDate(postId)}</div>
             <div className="flex self-end gap-4">
-                {name === user.username ? <button onClick={editPost} className="transition bg-emerald-500 hover:bg-emerald-600 rounded p-2 text-lg font-bold text-white self-end" >Edit</button> : null}
+                {/* {name === user.username ? <button onClick={editPost} className="transition bg-emerald-500 hover:bg-emerald-600 rounded p-2 text-lg font-bold text-white self-end" >Edit</button> : null} */}
                 {name === user.username ? <button onClick={deletePost} className="transition bg-red-500 hover:bg-red-600 rounded p-2 text-lg font-bold text-white self-end" >Delete</button> : null}
             </div>
         </div>
