@@ -115,6 +115,9 @@ dist
 # production
 */build
 
+# Dockerfile
+Dockerfile
+
 # misc
 .DS_Store
 .env.local
