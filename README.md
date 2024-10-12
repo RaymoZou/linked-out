@@ -2,7 +2,7 @@
 A bare-bones social media website created using React to render the front-end view and an Express server connected to a MongoDB instance to handle read/writes to the database.
 
 ## Core Features
-- Login and logout through JSON Web Token validation
+- Persistent user sessions with JSON Web Token validation. After successful authentication, a cookie is stored on the client which verifies that subsequent requests authorized.
 - Encrypted password hashes stored on NoSQL database
 - Read and write posts through HTTP GET and POST requests to the backend
 - Delete posts if the post belongs to the user
