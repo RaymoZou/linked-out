@@ -33,7 +33,7 @@ MONGODB_URI={MONGODB_URI} // connection string for connecting to MongoDB cloud i
 DB_NAME={DB_NAME}         // name of your MongoDB subdirectory
 PORT={PORT}               // port server is hosted at
 JWT_SECRET_KEY={JWT_KEY}  // JSON Web Token key used for verifying user requests
-ALLOWED_ORIGIN            // only requests from this origin are allowed
+ALLOWED_ORIGIN            // only requests from this origin are allowed, for example `http://localhost:3000` to accept request on localhost on port 3000
 ```
 3. `npm install` to install dependencies
 4. `node server.js` to run the server
