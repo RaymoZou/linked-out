@@ -31,9 +31,9 @@ A bare-bones social media website created using React to render the front-end vi
 ```
 MONGODB_URI={MONGODB_URI} // connection string for connecting to MongoDB cloud instance
 DB_NAME={DB_NAME}         // name of your MongoDB subdirectory
-PORT={PORT}               // port server is hosted at
+PORT={PORT}               // port server is to be hosted at
 JWT_SECRET_KEY={JWT_KEY}  // JSON Web Token key used for verifying user requests
-ALLOWED_ORIGIN            // only requests from this origin are allowed, for example `http://localhost:3000` to accept request on localhost on port 3000
+ALLOWED_ORIGIN            // only requests from this origin are allowed, for example: `http://localhost:3000` to only accept requests locally
 ```
 3. `npm install` to install dependencies
 4. `node server.js` to run the server
