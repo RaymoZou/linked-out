@@ -39,15 +39,16 @@ export default function PostCreationBar() {
     };
 
     return (
-        <div className='flex gap-4 bg-indigo-200 p-4 justify-center rounded' onSubmit={handleSubmit}>
+        <div className='flex shadow-lg gap-4 bg-indigo-200 p-4 justify-center rounded' onSubmit={handleSubmit}>
             <form name="form" className='flex gap-4'>
                 <input onChange={onChange}
                     value={postText}
                     type="text" name="post"
                     placeholder="What's on your mind?"
-                    className="p-4 rounded shadow-none outline-none"
+                    className="p-4 shadow-lg rounded shadow-none outline-none"
                     required
                 />
+                {/* TODO: replace this with custom Button.jsx class for modularity */}
                 <button className="transition bg-violet-500 hover:bg-violet-600 text-lg text-white font-bold p-2 rounded">Post</button>
             </form>
         </div>
