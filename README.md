@@ -1,5 +1,6 @@
 # LinkedOut
-A bare-bones social media website created using React to render the front-end view and an Express server connected to a MongoDB instance to handle read/writes to the database.
+A bare-bones social media website created using React to render the front-end view and an Express server connected to a MongoDB instance to handle read/writes to the database. This project features [Jamstack](https://jamstack.org/) 
+architecture with the front-end built and deployed to GitHub Pages and the server hosted separately on Railway.
 
 ## Core Features
 - Persistent user sessions with JSON Web Token validation. After successful authentication, a cookie is stored on the client which verifies that subsequent requests authorized.
@@ -25,7 +26,7 @@ A bare-bones social media website created using React to render the front-end vi
 2. `npm install` to install dependencies
 4. `npm run start` to start the React app
 
-## Server setup
+## Server Setup
 1. Navigate to the `server` directory
 2. Create a `.env.` file with the following fields
 ```
