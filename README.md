@@ -37,7 +37,7 @@ JWT_SECRET_KEY={JWT_KEY}  // JSON Web Token key used for verifying user requests
 ALLOWED_ORIGIN            // only requests from this origin are allowed, for example: `http://localhost:3000` to only accept requests locally
 ```
 3. `npm install` to install dependencies
-4. `node server.js` to run the server
+4. `npm run start` to run the development server.
 
 ## Live Preview
 Check it out live [here!](https://raymozou.github.io/linked-out/)
