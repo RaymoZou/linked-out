@@ -35,6 +35,7 @@ DB_NAME={DB_NAME}         // name of your MongoDB subdirectory
 PORT={PORT}               // port server is to be hosted at
 JWT_SECRET_KEY={JWT_KEY}  // JSON Web Token key used for verifying user requests
 ALLOWED_ORIGIN            // only requests from this origin are allowed, for example: `http://localhost:3000` to only accept requests locally
+JWT_EXPIRATION_LENGTH     // Duration for how long a user's JWT is valid for - expressed as a vercel/ms string (https://github.com/vercel/ms) 
 ```
 3. `npm install` to install dependencies
 4. `npm run start` to run the development server.

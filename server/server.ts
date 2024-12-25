@@ -37,7 +37,7 @@ app.use(cors({
 app.use(morgan('dev'));
 
 function generateJWT(payload: object): string {
-    const token = sign(payload, process.env.JWT_SECRET_KEY as string, { expiresIn: "14d" });
+    const token = sign(payload, process.env.JWT_SECRET_KEY as string, { expiresIn: process.env.JWT_EXPIRATION_LENGTH as string });
     return token;
 };
 
