@@ -28,7 +28,7 @@ architecture with the front-end built and deployed to GitHub Pages and the serve
 
 ## Server Setup
 1. Navigate to the `server` directory
-2. Create a `.env.` file with the following fields
+2. Create a `.env` file with the following fields
 ```
 MONGODB_URI={MONGODB_URI} // connection string for connecting to MongoDB cloud instance
 DB_NAME={DB_NAME}         // name of your MongoDB subdirectory
