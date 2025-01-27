@@ -106,9 +106,12 @@ app.post('/signup', async (req, res) => {
             try {
                 const user = new User({ username, hash });
                 await user.save();
-                res.status(200).cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "none", secure: true }).send('cookie set');
+                res.status(200)
+                    .cookie('jwt_token', generateJWT({ username }), { httpOnly: true, sameSite: "none", secure: true })
+                    .send('cookie set');
             } catch (err) {
-                res.status(500).send("error creating the user");
+                res.status(500)
+                    .send("error creating the user");
                 console.error();
             }
         });
@@ -128,17 +131,21 @@ app.post('/login', async (req: Request, res: Response) => {
                     // set httpOnly true to make cookie inaccessible via javascript client side
                     // set sameSite to "lax" to allow for cookies to be sent to requests from another site
                     var token: string = generateJWT({ username });
-                    res.status(200).cookie('jwt_token', token, { httpOnly: true, sameSite: "none", secure: true }).send('cookie set');
+                    res.status(200)
+                        .cookie('jwt_token', token, { httpOnly: true, sameSite: "none", secure: true })
+                        .send('cookie set');
                 } else {
-                    res.status(401).json({ message: "user unauthorized" });
+                    res.status(401)
+                        .json({ message: "user unauthorized" });
                 }
             });
         } else {
-            res.status(401).json({ message: "user not found" })
+            res.status(401)
+                .json({ message: "user not found" })
         }
     } catch (err) {
         console.log(err);
-        res.sendStatus(500)
+        res.sendStatus(500);
     }
 })
 
@@ -146,7 +153,8 @@ app.post('/login', async (req: Request, res: Response) => {
 app.get('/logout', (_, res) => {
     try {
         // TODO: should jwt_token be a constant string?
-        res.clearCookie('jwt_token', { httpOnly: true, sameSite: "none", secure: true }).sendStatus(200);
+        res.clearCookie('jwt_token', { httpOnly: true, sameSite: "none", secure: true })
+            .sendStatus(200);
     } catch (err) {
         res.sendStatus(500);
     }
