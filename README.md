@@ -25,6 +25,8 @@ architecture with the front-end built and deployed to GitHub Pages and the serve
 1. Navigate to the `client` directory
 2. `npm install` to install dependencies
 4. `npm run start` to start the React app
+5. `npm run build` to build static assets
+6. `npm run deploy` to deploy to GitHub pages
 
 ## Server Setup
 1. Navigate to the `server` directory
