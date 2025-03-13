@@ -18,8 +18,8 @@ architecture with the front-end built and deployed to GitHub Pages and the serve
 ## User Structure
 | Name        | Data Type   | Description |
 | ----------- | ----------- | ----------- |
-| `username`  | String      |             |
-| `hash`      | String      | password encrypted with bcrypt |
+| `username`  | String      | Unique username |
+| `hash`      | String      | Password encrypted with bcrypt |
 
 ## Client Setup
 1. Navigate to the `client` directory
