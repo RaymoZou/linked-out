@@ -18,8 +18,13 @@ export default function LoginPage({ setUser }) {
         e.preventDefault();
         const username = e.target.username.value
         const password = e.target.password.value
-        const res = await axios.post(`/signup`, { username, password }, { withCredentials: true });
-        if (res.status === 200) setUser({ username });
+        try {
+            const res = await axios.post(`/signup`, { username, password }, { withCredentials: true });
+            if (res.status === 200) setUser({ username });
+        } catch (err) {
+            // TODO: render some sort of ui component to display
+            console.log(err);
+        }
     }
 
     return (
