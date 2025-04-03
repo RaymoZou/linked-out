@@ -27,7 +27,7 @@ export default function LoginPage({ setUser }) {
             <div className="text-2xl font-bold"> LinkedOut </div>
             <form onSubmit={isLogin ? login : signup} className="flex flex-col gap-2">
                 <input id="username" type="text" placeholder="username" className="p-2 rounded outline-none" autoComplete="on" required />
-                <input id="password" minlength="8" type="password" placeholder="password" className="p-2 rounded outline-none" autoComplete="on" required />
+                <input id="password" minLength="8" type="password" placeholder="password" className="p-2 rounded outline-none" autoComplete="on" required />
                 {isLogin ?
                     <button className="transition bg-blue-500 hover:bg-blue-600 text-lg text-white font-bold p-2 rounded">Login</button>
                     :
